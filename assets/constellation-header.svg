@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 420" role="img" aria-labelledby="title description">
+  <title id="title">Abstract constellation</title>
+  <desc id="description">A sparse field of connected points in a calm midnight palette.</desc>
+  <rect width="1600" height="420" fill="#0d1117"/>
+  <g fill="none" stroke="#8b949e" stroke-width="1.4" stroke-linecap="round" opacity="0.48">
+    <path d="M176 232 L360 148 L540 216 L716 94 L900 168 L1092 112 L1306 194 L1450 136"/>
+    <path d="M360 148 L428 286 L540 216 L650 320 L900 168 L1004 286 L1092 112 L1218 300 L1306 194"/>
+    <path d="M176 232 L286 340 L428 286 L650 320 L804 340 L1004 286 L1218 300 L1390 334"/>
+    <path d="M716 94 L740 258 L900 168"/>
+  </g>
+  <g fill="#58a6ff">
+    <circle cx="176" cy="232" r="4"/>
+    <circle cx="360" cy="148" r="5"/>
+    <circle cx="540" cy="216" r="3.5"/>
+    <circle cx="716" cy="94" r="5"/>
+    <circle cx="900" cy="168" r="4.5"/>
+    <circle cx="1092" cy="112" r="4"/>
+    <circle cx="1306" cy="194" r="5"/>
+    <circle cx="1450" cy="136" r="3.5"/>
+  </g>
+  <g fill="#d2a8ff">
+    <circle cx="286" cy="340" r="3"/>
+    <circle cx="428" cy="286" r="3.5"/>
+    <circle cx="650" cy="320" r="3"/>
+    <circle cx="740" cy="258" r="3"/>
+    <circle cx="804" cy="340" r="3"/>
+    <circle cx="1004" cy="286" r="3.5"/>
+    <circle cx="1218" cy="300" r="3"/>
+    <circle cx="1390" cy="334" r="3"/>
+  </g>
+  <g fill="#f0f6fc" opacity="0.94">
+    <circle cx="176" cy="232" r="1.4"/>
+    <circle cx="360" cy="148" r="1.5"/>
+    <circle cx="716" cy="94" r="1.5"/>
+    <circle cx="900" cy="168" r="1.4"/>
+    <circle cx="1306" cy="194" r="1.5"/>
+  </g>
+</svg>

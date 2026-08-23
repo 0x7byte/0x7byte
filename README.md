@@ -19,21 +19,17 @@ next.route   = "Python -> data -> AI engineering";
 
 > I build systems and graphics projects in C, currently exploring recursive visuals with raylib. I am moving deliberately toward AI engineering through Python, data, and machine learning.
 
-## Live build board
+## Live build signal
 
-<div align="center">
-  <a href="https://github.com/0x7byte/fractal_tree"><img src="https://github-readme-stats.vercel.app/api/pin/?username=0x7byte&repo=fractal_tree&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=22D3EE&text_color=CBD5E1&icon_color=A78BFA" alt="Fractal Tree repository card" /></a>
-  <a href="https://github.com/0x7byte/RLE_Compressor-Decompressor"><img src="https://github-readme-stats.vercel.app/api/pin/?username=0x7byte&repo=RLE_Compressor-Decompressor&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=22D3EE&text_color=CBD5E1&icon_color=A78BFA" alt="RLE Compressor Decompressor repository card" /></a>
-  <a href="https://github.com/0x7byte/student-hall-management-system"><img src="https://github-readme-stats.vercel.app/api/pin/?username=0x7byte&repo=student-hall-management-system&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=22D3EE&text_color=CBD5E1&icon_color=A78BFA" alt="Student Hall Management System repository card" /></a>
-  <a href="https://github.com/0x7byte/vehicle-management-system"><img src="https://github-readme-stats.vercel.app/api/pin/?username=0x7byte&repo=vehicle-management-system&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=22D3EE&text_color=CBD5E1&icon_color=A78BFA" alt="Vehicle Management System repository card" /></a>
-</div>
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/live-build.svg" alt="Live public-data build signal" width="100%" />
 
-## Signals
+## Builds
 
-<div align="center">
-  <img height="158" src="https://github-readme-stats.vercel.app/api?username=0x7byte&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=22D3EE&icon_color=A78BFA&text_color=CBD5E1" alt="Live GitHub statistics" />
-  <img height="158" src="https://github-readme-streak-stats.herokuapp.com/?user=0x7byte&theme=tokyonight&hide_border=true&background=0D1117&ring=22D3EE&fire=A78BFA&currStreakLabel=CBD5E1" alt="GitHub contribution streak" />
-</div>
+| Project | What it proves |
+|---|---|
+| [Fractal Tree](https://github.com/0x7byte/fractal_tree) | Recursive graphics, trigonometry, and real-time rendering with C and raylib. |
+| [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) | Reversible transformation and compression logic in a focused C CLI. |
+| [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system) | Structured records, file I/O, authentication, meal tracking, and billing workflows. |
 
 ## Contribution stream
 

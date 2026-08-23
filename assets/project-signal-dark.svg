@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="146" viewBox="0 0 880 146" role="img" aria-labelledby="title desc">
+  <title id="title">Featured public project</title>
+  <desc id="desc">Current public project signal for fractal_tree.</desc>
+  <rect x="0.5" y="0.5" width="879" height="145" rx="8" fill="#0d1117" stroke="#30363d"/>
+  <circle cx="36" cy="38" r="7" fill="#58a6ff"/>
+  <text x="54" y="43" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" font-weight="600" letter-spacing="1.5">FEATURED PUBLIC PROJECT</text>
+  <text x="29" y="86" fill="#f0f6fc" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="25" font-weight="700">fractal_tree</text>
+  <text x="29" y="119" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16">C · source updated Aug 23, 2026</text>
+  <text x="705" y="86" fill="#58a6ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" font-weight="600">open source ↗</text>
+</svg>

@@ -19,17 +19,11 @@ next.route   = "Python -> data -> AI engineering";
 
 > I build systems and graphics projects in C, currently exploring recursive visuals with raylib. I am moving deliberately toward AI engineering through Python, data, and machine learning.
 
-## Live build signal
+## The recursion field
 
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/live-build.svg" alt="Live public-data build signal" width="100%" />
+<a href="https://github.com/0x7byte/fractal_tree"><img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/recursion-field.svg" alt="A recursive tree derived from the Fractal Tree project" width="100%" /></a>
 
-## Builds
-
-| Project | What it proves |
-|---|---|
-| [Fractal Tree](https://github.com/0x7byte/fractal_tree) | Recursive graphics, trigonometry, and real-time rendering with C and raylib. |
-| [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) | Reversible transformation and compression logic in a focused C CLI. |
-| [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system) | Structured records, file I/O, authentication, meal tracking, and billing workflows. |
+<div align="center"><sub><a href="https://github.com/0x7byte/fractal_tree">open the source</a> · a visual generated from the public fractal-tree code · rebuilt by the daily profile refresh</sub></div>
 
 ## Contribution stream
 

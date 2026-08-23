@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="228" viewBox="0 0 900 228" role="img" aria-labelledby="title desc">
+  <title id="title">0x7byte live build signal</title>
+  <desc id="desc">A live public-data summary of 0x7byte GitHub work.</desc>
+  <defs>
+    <linearGradient id="line" x1="0" x2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="55%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="228" rx="14" fill="#0d1117"/>
+  <rect x="0" y="0" width="900" height="4" fill="url(#line)"/>
+  <text x="36" y="47" fill="#22d3ee" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="700" letter-spacing="2">LIVE BUILD SIGNAL</text>
+  <text x="36" y="82" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">fractal_tree</text>
+  <text x="36" y="110" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14">current featured build  /  C</text>
+  <line x1="36" y1="136" x2="864" y2="136" stroke="#263244"/>
+  <text x="36" y="171" fill="#a78bfa" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700">PUBLIC REPOS</text>
+  <text x="36" y="202" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="24" font-weight="700">5</text>
+  <text x="244" y="171" fill="#a78bfa" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700">ACTIVE LANGUAGES</text>
+  <text x="244" y="202" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="700">C</text>
+  <text x="634" y="171" fill="#a78bfa" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700">LATEST UPDATE</text>
+  <text x="634" y="202" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="700">Aug 23, 2026</text>
+</svg>

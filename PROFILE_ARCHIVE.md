@@ -8,6 +8,7 @@
 | `profile-minimal-dynamic-v1` | The minimal build-mode profile containing the live-build signal and generic project table. | `git checkout profile-minimal-dynamic-v1 -- README.md .github/workflows/refresh-profile.yml` |
 | `profile-recursion-field-v1` | The minimal build-mode profile featuring the generated Fractal Tree recursion field. | `git checkout profile-recursion-field-v1 -- README.md .github/workflows/refresh-profile.yml` |
 | `profile-code-identity-v1` | The minimal build-mode profile featuring the Identity byte code block. | `git checkout profile-code-identity-v1 -- README.md .github/workflows/refresh-profile.yml` |
+| `profile-dynamic-activity-v1` | The public profile containing the automated public-activity panel. | `git checkout profile-dynamic-activity-v1 -- README.md .github/workflows/refresh-profile.yml` |
 
 ## Revision rule
 

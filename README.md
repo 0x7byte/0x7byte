@@ -13,9 +13,9 @@ C developer from Rangpur, Bangladesh.
 ### Public code footprint
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.svg" />
-  <img alt="Public code footprint" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.svg" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-dark.svg?profile=code-footprint-v1" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.svg?profile=code-footprint-v1" />
+  <img alt="Public code footprint" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.svg?profile=code-footprint-v1" width="100%" />
 </picture>
 
 ---

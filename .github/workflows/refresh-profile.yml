@@ -1,13 +1,9 @@
-name: Refresh Dynamic Profile Assets
+name: Refresh Profile Animation
 
 on:
   schedule:
-    - cron: "17 3 * * *"
+    - cron: "19 3 * * *"
   workflow_dispatch:
-  push:
-    paths:
-      - "scripts/generate-profile-assets.mjs"
-      - ".github/workflows/refresh-profile.yml"
 
 permissions:
   contents: write
@@ -17,19 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: Platane/snk@v3
         with:
-          node-version: "20"
-      - name: Generate public-data profile assets
-        run: node scripts/generate-profile-assets.mjs
-      - name: Commit refreshed assets when data changed
+          github_user_name: 0x7byte
+          outputs: |
+            assets/contribution-snake-light.svg?palette=github-light
+            assets/contribution-snake-dark.svg?palette=github-dark
+      - name: Commit refreshed animation when it changes
         run: |
           if git diff --quiet; then
-            echo "No public profile changes to commit."
+            echo "No contribution animation changes to commit."
             exit 0
           fi
           git config user.name "0x7byte profile bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/observatory-light.svg assets/observatory-dark.svg
-          git commit -m "chore: refresh public profile observatory"
+          git add assets/contribution-snake-light.svg assets/contribution-snake-dark.svg
+          git commit -m "chore: refresh contribution animation"
           git push

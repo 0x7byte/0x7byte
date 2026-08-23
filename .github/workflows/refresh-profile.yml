@@ -31,7 +31,7 @@ jobs:
         run: |
           git config user.name "0x7byte profile bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --force assets/code-footprint-light.png assets/code-footprint-dark.png assets/contribution-snake-light.svg assets/contribution-snake-dark.svg
+          git add --force assets/code-footprint-light.png assets/code-footprint-dark.png assets/contribution-mix-light.png assets/contribution-mix-dark.png assets/contribution-snake-light.svg assets/contribution-snake-dark.svg
           if git diff --cached --quiet; then
             echo "No profile asset changes to commit."
             exit 0

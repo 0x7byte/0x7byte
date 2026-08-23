@@ -5,20 +5,16 @@
 ### Build deliberately. Learn in public. Ship evidence.
 
 <a href="https://github.com/0x7byte"><img src="https://img.shields.io/badge/GitHub-0x7byte-0B1220?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" /></a>
-<a href="https://colonel-us.medium.com"><img src="https://img.shields.io/badge/Notes-Medium-0B1220?style=for-the-badge&logo=medium&logoColor=white" alt="Medium notes" /></a>
 <img src="https://img.shields.io/badge/Location-Rangpur%2C%20Bangladesh-0B1220?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Rangpur, Bangladesh" />
+<img src="https://img.shields.io/badge/Focus-Systems%20%E2%86%92%20AI%20Engineering-0B1220?style=for-the-badge&logo=google&logoColor=white" alt="Systems to AI Engineering" />
 
 </div>
 
-```text
-┌────────────────────────────────────────────────────────────────────┐
-│  0x7byte / ENGINEERING LOG                                         │
-├────────────────────────────────────────────────────────────────────┤
-│  STATUS    building foundations → turning ideas into useful tools  │
-│  FOCUS     systems thinking · data workflows · AI engineering      │
-│  METHOD    understand → implement → test → document → improve      │
-└────────────────────────────────────────────────────────────────────┘
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/observatory-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/observatory-light.svg" />
+  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/observatory-light.svg" alt="0x7byte Engineering Observatory" width="100%" />
+</picture>
 
 ## Signal
 
@@ -61,12 +57,6 @@ I am a systems-minded developer building reliable software from first principles
 
 ## How I Work
 
-I keep scope intentional, document assumptions, and prefer a simple solution that can be understood and improved over a complex one that cannot. I use this profile as an engineering record: the public projects show where I started, and each new build should make the next level of capability visible.
+I keep scope intentional, document assumptions, and prefer a simple solution that can be understood and improved over a complex one that cannot. The observatory above is generated from public GitHub data by a daily repository workflow; it does not access private repositories or require a personal token.
 
-## Contact & Writing
-
-Follow my work on [GitHub](https://github.com/0x7byte) or read my notes on [Medium](https://colonel-us.medium.com). I am based in Rangpur, Bangladesh and open to learning opportunities, thoughtful feedback, and technically serious collaboration.
-
-<div align="center">
-  <sub>0x7byte · engineering in public, one reliable system at a time.</sub>
-</div>
+<div align="center"><sub>0x7byte · engineering in public, one reliable system at a time.</sub></div>

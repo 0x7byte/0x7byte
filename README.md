@@ -1,14 +1,38 @@
-## Hello, I’m mhsan
+<div align="center">
 
-C developer from Rangpur, Bangladesh.
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/constellation-header.svg" alt="Abstract constellation header" width="100%" />
 
-- `C` / `raylib` / `Git` / `Bash` / `Linux`
-- [Fractal Tree](https://github.com/0x7byte/fractal_tree) — recursive graphics and real-time rendering.
-- [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) — reversible run-length encoding in C.
-- [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system) — records, authentication, meals, and billing.
-- [Vehicle Management System](https://github.com/0x7byte/vehicle-management-system) — structured CRUD workflows in C.
+# 0x7byte
+
+<sub>C developer · Rangpur, Bangladesh</sub>
+
+</div>
+
+<br />
+
+<div align="center">
+
+<a href="https://github.com/0x7byte/fractal_tree">Fractal Tree</a>
+&nbsp;·&nbsp;
+<a href="https://github.com/0x7byte/RLE_Compressor-Decompressor">RLE Compressor / Decompressor</a>
+&nbsp;·&nbsp;
+<a href="https://github.com/0x7byte/student-hall-management-system">Student Hall Management System</a>
+&nbsp;·&nbsp;
+<a href="https://github.com/0x7byte/vehicle-management-system">Vehicle Management System</a>
+
+</div>
+
+<br />
+
+<div align="center">
+
+<code>C</code> · <code>raylib</code> · <code>Git</code> · <code>Bash</code> · <code>Linux</code>
+
+</div>
 
 ---
+
+<div align="center">
 
 ### Contribution stream
 
@@ -19,3 +43,5 @@ C developer from Rangpur, Bangladesh.
 </picture>
 
 <sub>Updated automatically from public contribution activity.</sub>
+
+</div>

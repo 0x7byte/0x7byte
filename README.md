@@ -19,11 +19,17 @@ next.route   = "Python -> data -> AI engineering";
 
 > I build systems and graphics projects in C, currently exploring recursive visuals with raylib. I am moving deliberately toward AI engineering through Python, data, and machine learning.
 
-## The recursion field
+## Identity byte
 
-<a href="https://github.com/0x7byte/fractal_tree"><img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/recursion-field.svg" alt="A recursive tree derived from the Fractal Tree project" width="100%" /></a>
+```text
+30 78 37 62 79 74 65  →  0x7byte
 
-<div align="center"><sub><a href="https://github.com/0x7byte/fractal_tree">open the source</a> · a visual generated from the public fractal-tree code · rebuilt by the daily profile refresh</sub></div>
+build / C systems + visual experiments
+now   / Fractal Tree with raylib
+next  / Python → data → AI engineering
+```
+
+<div align="center"><sub><a href="https://github.com/0x7byte/fractal_tree">current source: Fractal Tree</a> · one recursive function, a whole visual system</sub></div>
 
 ## Contribution stream
 

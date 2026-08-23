@@ -10,15 +10,13 @@ C developer from Rangpur, Bangladesh.
 
 ---
 
-### Featured source
+### Public code footprint
 
-<a href="https://github.com/0x7byte/fractal_tree">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/project-signal-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/project-signal-light.svg" />
-    <img alt="Featured public project signal" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/project-signal-light.svg" width="100%" />
-  </picture>
-</a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.svg" />
+  <img alt="Public code footprint" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.svg" width="100%" />
+</picture>
 
 ---
 
@@ -30,4 +28,4 @@ C developer from Rangpur, Bangladesh.
   <img alt="Contribution activity animation" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-dark.svg" width="100%" />
 </picture>
 
-<sub>Public project signal and contribution animation refresh automatically.</sub>
+<sub>Public code footprint and contribution animation refresh automatically.</sub>

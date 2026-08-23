@@ -1,52 +1,46 @@
+<div align="center">
+
 # 0x7byte
 
-**C developer** · Rangpur, Bangladesh
+<sub>C developer · Rangpur, Bangladesh</sub>
 
-`C` · `raylib` · `Git` · `Bash` · `Linux`
+</div>
 
 ---
 
-## Project files
+## Developer dossier
 
-<details open>
-<summary><strong>01 · Fractal Tree</strong> — <code>C</code> <code>raylib</code></summary>
+### Case file 01 — [Fractal Tree](https://github.com/0x7byte/fractal_tree)
 
-<br />
+> **Scope:** Recursive visual rendering in C with raylib.  
+> **Evidence:** Branching geometry, trigonometry, and real-time drawing.  
+> **Source:** [github.com/0x7byte/fractal_tree](https://github.com/0x7byte/fractal_tree)
 
-Recursive branching, trigonometry, and real-time graphics in a compact visual program.
+### Case file 02 — [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)
 
-[View repository →](https://github.com/0x7byte/fractal_tree)
-</details>
+> **Scope:** Reversible run-length encoding through a command-line interface.  
+> **Evidence:** Standard input/output processing and transformation logic.  
+> **Source:** [github.com/0x7byte/RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)
 
-<details>
-<summary><strong>02 · RLE Compressor / Decompressor</strong> — <code>C</code> <code>CLI</code></summary>
+### Case file 03 — [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system)
 
-<br />
+> **Scope:** A modular C management program.  
+> **Evidence:** File I/O, authentication, meal records, and billing workflows.  
+> **Source:** [github.com/0x7byte/student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)
 
-A reversible run-length encoder and decoder built for standard input and output.
+### Case file 04 — [Vehicle Management System](https://github.com/0x7byte/vehicle-management-system)
 
-[View repository →](https://github.com/0x7byte/RLE_Compressor-Decompressor)
-</details>
+> **Scope:** Structured data management in a console program.  
+> **Evidence:** Structs, validation, CRUD flows, and array-based records.  
+> **Source:** [github.com/0x7byte/vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)
 
-<details>
-<summary><strong>03 · Student Hall Management System</strong> — <code>C</code> <code>file I/O</code></summary>
+---
 
-<br />
+<div align="center">
 
-Records, authentication, meals, and billing organized as a modular console program.
+`C` · `raylib` · `Git` · `GitHub` · `Bash` · `Linux`
 
-[View repository →](https://github.com/0x7byte/student-hall-management-system)
-</details>
-
-<details>
-<summary><strong>04 · Vehicle Management System</strong> — <code>C</code> <code>data structures</code></summary>
-
-<br />
-
-Structured CRUD workflows with validation and array-based data management.
-
-[View repository →](https://github.com/0x7byte/vehicle-management-system)
-</details>
+</div>
 
 ---
 

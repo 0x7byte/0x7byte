@@ -25,14 +25,11 @@ jobs:
             assets/contribution-snake-light.svg?palette=github-light
             assets/contribution-snake-dark.svg?palette=github-dark
 
-      - name: Generate recursion field from Fractal Tree source
-        run: node scripts/generate-recursion-field.mjs
-
       - name: Commit refreshed animation when it changes
         run: |
           git config user.name "0x7byte profile bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --force assets/contribution-snake-light.svg assets/contribution-snake-dark.svg assets/recursion-field.svg
+          git add --force assets/contribution-snake-light.svg assets/contribution-snake-dark.svg
           if git diff --cached --quiet; then
             echo "No contribution animation changes to commit."
             exit 0

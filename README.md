@@ -1,8 +1,11 @@
-## Hello, I’m mhsan
+## mhsan
 
-C developer from Rangpur, Bangladesh.
+> C developer · Rangpur, Bangladesh
 
-- `C` / `raylib` / `Git` / `Bash` / `Linux`
+`C` · `raylib` · `Git` · `Bash` · `Linux`
+
+### Public work
+
 - [Fractal Tree](https://github.com/0x7byte/fractal_tree) — recursive graphics and real-time rendering.
 - [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) — reversible run-length encoding in C.
 - [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system) — records, authentication, meals, and billing.

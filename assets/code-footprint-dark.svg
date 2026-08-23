@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="350" viewBox="0 0 880 350" role="img" aria-labelledby="title desc">
+  <title id="title">Public code footprint</title>
+  <desc id="desc">Language distribution and public project volume derived from 0x7byte public repositories.</desc>
+  <rect x="0.5" y="0.5" width="879" height="349" rx="9" fill="#161b22" stroke="#30363d"/>
+  <rect x="1" y="1" width="878" height="56" rx="9" fill="#0d1117"/>
+  <text x="30" y="36" fill="#58a6ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="17" font-weight="700">▥ PUBLIC CODE FOOTPRINT</text>
+  <text x="850" y="36" fill="#8b949e" text-anchor="end" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="13">source updated Aug 23, 2026</text>
+  <text x="30" y="81" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14">Language mix across 4 public source projects</text>
+  <text x="30" y="120" fill="#f0f6fc" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">C</text>
+      <rect x="190" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="203" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="216" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="229" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="242" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="255" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="268" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="281" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="294" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="307" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="320" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="333" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="346" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="359" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="372" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="385" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="398" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="411" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="424" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="437" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="450" y="110" width="9" height="11" rx="2" fill="#58a6ff"/><rect x="463" y="110" width="9" height="11" rx="2" fill="#58a6ff"/>
+      <text x="510" y="120" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14">100.0%</text>
+  <line x1="30" y1="208" x2="850" y2="208" stroke="#30363d"/>
+  <text x="30" y="232" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14">Public project volume</text>
+  <text x="30" y="235" fill="#f0f6fc" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14">fractal_tree</text>
+      <rect x="310" y="224" width="235" height="8" rx="4" fill="#21262d"/>
+      <rect x="310" y="224" width="160.63291139240505" height="8" rx="4" fill="#a5d6ff"/>
+      <text x="565" y="235" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">68.4%</text><text x="30" y="258" fill="#f0f6fc" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14">vehicle-management-system</text>
+      <rect x="310" y="247" width="235" height="8" rx="4" fill="#21262d"/>
+      <rect x="310" y="247" width="32.72151898734177" height="8" rx="4" fill="#a5d6ff"/>
+      <text x="565" y="258" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">13.9%</text><text x="30" y="281" fill="#f0f6fc" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14">student-hall-management-system</text>
+      <rect x="310" y="270" width="235" height="8" rx="4" fill="#21262d"/>
+      <rect x="310" y="270" width="29.746835443037977" height="8" rx="4" fill="#a5d6ff"/>
+      <text x="565" y="281" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">12.7%</text><text x="30" y="304" fill="#f0f6fc" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14">RLE_Compressor-Decompressor</text>
+      <rect x="310" y="293" width="235" height="8" rx="4" fill="#21262d"/>
+      <rect x="310" y="293" width="11.898734177215191" height="8" rx="4" fill="#a5d6ff"/>
+      <text x="565" y="304" fill="#8b949e" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">5.1%</text>
+</svg>

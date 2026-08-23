@@ -1,38 +1,26 @@
-<div align="center">
+## Hello, I’m mhsan
 
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/constellation-header.svg" alt="Abstract constellation header" width="100%" />
+C developer from Rangpur, Bangladesh.
 
-# 0x7byte
-
-<sub>C developer · Rangpur, Bangladesh</sub>
-
-</div>
-
-<br />
-
-<div align="center">
-
-<a href="https://github.com/0x7byte/fractal_tree">Fractal Tree</a>
-&nbsp;·&nbsp;
-<a href="https://github.com/0x7byte/RLE_Compressor-Decompressor">RLE Compressor / Decompressor</a>
-&nbsp;·&nbsp;
-<a href="https://github.com/0x7byte/student-hall-management-system">Student Hall Management System</a>
-&nbsp;·&nbsp;
-<a href="https://github.com/0x7byte/vehicle-management-system">Vehicle Management System</a>
-
-</div>
-
-<br />
-
-<div align="center">
-
-<code>C</code> · <code>raylib</code> · <code>Git</code> · <code>Bash</code> · <code>Linux</code>
-
-</div>
+- `C` / `raylib` / `Git` / `Bash` / `Linux`
+- [Fractal Tree](https://github.com/0x7byte/fractal_tree) — recursive graphics and real-time rendering.
+- [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) — reversible run-length encoding in C.
+- [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system) — records, authentication, meals, and billing.
+- [Vehicle Management System](https://github.com/0x7byte/vehicle-management-system) — structured CRUD workflows in C.
 
 ---
 
-<div align="center">
+### Featured source
+
+<a href="https://github.com/0x7byte/fractal_tree">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/project-signal-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/project-signal-light.svg" />
+    <img alt="Featured public project signal" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/project-signal-light.svg" width="100%" />
+  </picture>
+</a>
+
+---
 
 ### Contribution stream
 
@@ -42,6 +30,4 @@
   <img alt="Contribution activity animation" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-dark.svg" width="100%" />
 </picture>
 
-<sub>Updated automatically from public contribution activity.</sub>
-
-</div>
+<sub>Public project signal and contribution animation refresh automatically.</sub>

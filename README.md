@@ -1,62 +1,50 @@
 <div align="center">
 
-# 0x7byte
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/0x7byte-hero.png" alt="Abstract systems developer workspace" width="100%" />
 
-### Build deliberately. Learn in public. Ship evidence.
+# Hi, I’m 0x7byte
 
-<a href="https://github.com/0x7byte"><img src="https://img.shields.io/badge/GitHub-0x7byte-0B1220?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" /></a>
-<img src="https://img.shields.io/badge/Location-Rangpur%2C%20Bangladesh-0B1220?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Rangpur, Bangladesh" />
-<img src="https://img.shields.io/badge/Focus-Systems%20%E2%86%92%20AI%20Engineering-0B1220?style=for-the-badge&logo=google&logoColor=white" alt="Systems to AI Engineering" />
+### Systems builder. Curious learner. Future AI engineer.
+
+<a href="https://github.com/0x7byte"><img src="https://img.shields.io/badge/GitHub-0x7byte-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" /></a>
+<img src="https://img.shields.io/badge/Location-Rangpur%2C%20Bangladesh-111827?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Rangpur, Bangladesh" />
 
 </div>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/observatory-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/observatory-light.svg" />
-  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/observatory-light.svg" alt="0x7byte Engineering Observatory" width="100%" />
-</picture>
+## A little about me
 
-## Signal
+I build software by understanding the moving parts first. My work started with C programs, structured records, file-backed data, and command-line tools. I am now expanding that foundation through Python, data systems, machine learning, and AI engineering.
 
-I am a systems-minded developer building reliable software from first principles. My foundation is in C, structured data handling, file-backed programs, and command-line tools. I am now progressing deliberately into Python, SQL, machine learning, and production-minded AI engineering.
+```text
+currently building  → stronger programming foundations
+currently learning  → Python · SQL · statistics · machine learning
+always improving    → clarity · reliability · documentation
+```
 
-> **No shortcuts in the evidence.** A project should explain what it solves, show how it works, and make the engineering choices inspectable.
+## What I have built
 
-## Current Build Path
+| Project | Why it matters |
+|---|---|
+| [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) | A focused command-line tool for encoding and decoding repeated data. |
+| [Vehicle Management System](https://github.com/0x7byte/vehicle-management-system) | Structured records, validation, search, updates, and deletion in one practical application. |
+| [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system) | A modular system for student data, authentication, meal tracking, billing, and file persistence. |
 
-| Now | Next | Standard |
-|---|---|---|
-| Strengthening C fundamentals, Git workflows, and structured application design | Python, SQL, statistics, machine learning, retrieval, evaluation, APIs, and deployment | Correctness before complexity. Clear documentation before claims. Small, testable increments before scale. |
-
-<details>
-<summary><strong>Open the current learning route</strong></summary>
-
-<br />
-
-`C foundations` → `Python engineering` → `SQL & data modeling` → `ML fundamentals` → `retrieval systems` → `evaluation & security` → `production APIs` → `deployment & observability`
-
-</details>
-
-## Featured Builds
-
-| Build | Engineering evidence | Core tools |
-|---|---|---|
-| **[RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)** | A small command-line utility that encodes and reconstructs repeated data with explicit compression and decompression paths. | `C` · `stdin/stdout` · algorithmic thinking |
-| **[Vehicle Management System](https://github.com/0x7byte/vehicle-management-system)** | A structured record-management system with validation, search, update, deletion, and consistency-oriented data handling. | `C` · `structs` · arrays |
-| **[Student Hall Management System](https://github.com/0x7byte/student-hall-management-system)** | A modular application for student records, authentication, meal tracking, billing, and file-backed storage. | `C` · modular design · file I/O |
-
-## Working Toolkit
+## Toolbox
 
 <p>
-  <img src="https://img.shields.io/badge/C-0B1220?style=flat-square&logo=c&logoColor=A8B9CC" alt="C" />
-  <img src="https://img.shields.io/badge/Git-0B1220?style=flat-square&logo=git&logoColor=F05032" alt="Git" />
-  <img src="https://img.shields.io/badge/GitHub-0B1220?style=flat-square&logo=github&logoColor=white" alt="GitHub" />
-  <img src="https://img.shields.io/badge/GCC-0B1220?style=flat-square&logo=gnu&logoColor=white" alt="GCC" />
-  <img src="https://img.shields.io/badge/Make-0B1220?style=flat-square&logo=gnu&logoColor=white" alt="Make" />
+  <img src="https://skillicons.dev/icons?i=c,git,github,bash,linux&theme=dark" alt="C, Git, GitHub, Bash, Linux" />
 </p>
 
-## How I Work
+## Next on the roadmap
 
-I keep scope intentional, document assumptions, and prefer a simple solution that can be understood and improved over a complex one that cannot. The observatory above is generated from public GitHub data by a daily repository workflow; it does not access private repositories or require a personal token.
+`Python engineering` → `SQL and data modeling` → `machine learning` → `AI systems` → `production software`
 
-<div align="center"><sub>0x7byte · engineering in public, one reliable system at a time.</sub></div>
+## Contributions in motion
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg" />
+  <img alt="Animated contribution graph" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg" width="100%" />
+</picture>
+
+<div align="center"><sub>Building in public. Improving with every project.</sub></div>

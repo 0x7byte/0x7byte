@@ -16,9 +16,9 @@
 ### Public code footprint
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-dark.png?profile=code-footprint-v2" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.png?profile=code-footprint-v2" />
-  <img alt="Public code footprint" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.png?profile=code-footprint-v2" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-dark.png?profile=code-footprint-v3" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.png?profile=code-footprint-v3" />
+  <img alt="Public code footprint" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/code-footprint-light.png?profile=code-footprint-v3" width="100%" />
 </picture>
 
 ---

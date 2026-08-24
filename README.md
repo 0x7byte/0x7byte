@@ -89,7 +89,3 @@ Public source repository
 LATEST EVENT   24 Aug 2026
 SYNC WINDOW    every 15 minutes
 ```
-
-- **24 Aug 2026**
-
----

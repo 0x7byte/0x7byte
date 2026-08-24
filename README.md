@@ -86,10 +86,10 @@ Public source repository
 ## Latest GitHub trace
 
 ```text
-LATEST EVENT   24 Aug 2026 · Updated 0x7byte/0x7byte
+LATEST EVENT   24 Aug 2026
 SYNC WINDOW    every 15 minutes
 ```
 
-- **24 Aug 2026** — Updated `0x7byte/0x7byte`
+- **24 Aug 2026**
 
 ---

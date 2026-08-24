@@ -18,7 +18,7 @@ SOURCE STARS         1
 SOURCE FORKS         0
 CONTRIBUTIONS        162 in the last year
 LAST CONTRIBUTION    24 Aug 2026
-LATEST SOURCE        student-hall-management-system · 24 Aug 2026
+LATEST SOURCE        fractal_tree · 24 Aug 2026
 ```
 
 ## Coding Footprint in Public Source
@@ -37,7 +37,18 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 ## Public build records
 
 <details open>
-<summary><strong>01 · student-hall-management-system</strong> · C · updated 24 Aug 2026</summary>
+<summary><strong>01 · fractal_tree</strong> · C · updated 24 Aug 2026</summary>
+
+Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
+
+`C` · updated 24 Aug 2026 · 1 star · 0 forks
+
+[Open source →](https://github.com/0x7byte/fractal_tree)
+
+</details>
+
+<details>
+<summary><strong>02 · student-hall-management-system</strong> · C · updated 24 Aug 2026</summary>
 
 Public source repository
 
@@ -48,7 +59,7 @@ Public source repository
 </details>
 
 <details>
-<summary><strong>02 · vehicle-management-system</strong> · C · updated 24 Aug 2026</summary>
+<summary><strong>03 · vehicle-management-system</strong> · C · updated 24 Aug 2026</summary>
 
 Public source repository
 
@@ -59,24 +70,13 @@ Public source repository
 </details>
 
 <details>
-<summary><strong>03 · RLE_Compressor-Decompressor</strong> · C · updated 24 Aug 2026</summary>
+<summary><strong>04 · RLE_Compressor-Decompressor</strong> · C · updated 24 Aug 2026</summary>
 
 Public source repository
 
 `C` · updated 24 Aug 2026 · 0 stars · 0 forks
 
 [Open source →](https://github.com/0x7byte/RLE_Compressor-Decompressor)
-
-</details>
-
-<details>
-<summary><strong>04 · fractal_tree</strong> · C · updated 24 Aug 2026</summary>
-
-Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
-
-`C` · updated 24 Aug 2026 · 1 star · 0 forks
-
-[Open source →](https://github.com/0x7byte/fractal_tree)
 
 </details>
 

@@ -142,7 +142,10 @@ def contribution_days(user: dict) -> list[dict]:
 
 
 def contribution_version(days: list[dict]) -> str:
-    data = [(day["date"], day["contributionCount"]) for day in days]
+    data = {
+        "renderer": "continuous-snake-v2",
+        "days": [(day["date"], day["contributionCount"]) for day in days],
+    }
     return sha256(json.dumps(data, separators=(",", ":")).encode("utf-8")).hexdigest()[:12]
 
 

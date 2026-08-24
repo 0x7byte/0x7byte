@@ -1,6 +1,6 @@
 # mhsan
 
-**Competitive programmer · C developer · AI engineering path**
+**Competitive programmer**
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 

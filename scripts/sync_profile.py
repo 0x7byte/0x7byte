@@ -78,6 +78,25 @@ def compact_description(description: str | None) -> str:
     return value if len(value) <= 110 else f"{value[:107].rstrip()}…"
 
 
+def activity_compass(activity: list[tuple[str, int, float]]) -> str:
+    values = {label: (count, share) for label, count, share in activity}
+    commits, commit_share = values["Commits"]
+    pulls, pull_share = values["Pull requests"]
+    issues, issue_share = values["Issues"]
+    reviews, review_share = values["Reviews"]
+    return "\n".join(
+        [
+            "```text",
+            f"                       Code reviews  {reviews:>3} · {review_share:>3.0f}%",
+            "                                 |",
+            f"Commits  {commits:>3} · {commit_share:>3.0f}%  ----------------- + -----------------  Issues  {issues:>3} · {issue_share:>3.0f}%",
+            "                                 |",
+            f"                      Pull requests  {pulls:>3} · {pull_share:>3.0f}%",
+            "```",
+        ]
+    )
+
+
 def build_readme(user: dict, events: list[dict]) -> str:
     repositories = [repository for repository in user["repositories"]["nodes"] if repository["name"] != OWNER]
     if not repositories:
@@ -94,21 +113,22 @@ def build_readme(user: dict, events: list[dict]) -> str:
     lines = [
         f"# {name}",
         "",
-        f"**C developer** · {user.get('location') or 'GitHub'} · [@{user['login']}]({user['url']})",
+        f"**Competitive programmer** · {user.get('location') or 'GitHub'} · [@{user['login']}]({user['url']})",
+        "",
+        "> Algorithmic problem solving and C foundations, with a deliberate direction toward AI engineering.",
         "",
         "---",
         "",
-        "### Snapshot",
+        "### Working profile",
         "",
-        f"**{user['repositories']['totalCount']:02d}** public repositories · **{contribution_total:03d}** contributions this year",
-        "",
-        f"**Languages:** {languages}",
-        "",
-        f"**Latest source update:** [{repositories[0]['name']}]({repositories[0]['url']}) · {format_date(repositories[0]['updatedAt'])}",
+        f"- **Competitive programming:** algorithms, problem solving, and performance-aware C practice.",
+        "- **AI engineering direction:** building the foundations to move from systems thinking into practical AI work.",
+        f"- **Public code:** {languages} across **{user['repositories']['totalCount']:02d}** repositories.",
+        f"- **Latest source update:** [{repositories[0]['name']}]({repositories[0]['url']}) · {format_date(repositories[0]['updatedAt'])}.",
         "",
         "---",
         "",
-        "### Selected public source",
+        "### Public work",
         "",
     ]
     for repository in selected:
@@ -124,19 +144,19 @@ def build_readme(user: dict, events: list[dict]) -> str:
             "",
             "---",
             "",
-            "### Recent public contribution activity",
+            "### Contribution activity",
             "",
-            "| Contribution type | Latest 100 public events | Share |",
-            "| :-- | --: | --: |",
+            f"**{contribution_total:03d}** contributions in the last year · latest public event observed **{latest_event}**.",
+            "",
+            "#### Activity compass — live public events",
+            "",
         ]
     )
-    for label, count, share in activity:
-        lines.append(f"| {label} | {count} | {share:.0f}% |")
     lines.extend(
         [
-            f"| Latest observed public event | {latest_event} | — |",
+            activity_compass(activity),
             "",
-            "> Live public data refreshes every hour. GitHub’s native contribution calendar and activity remain below the profile README.",
+            "> The compass is accessible text generated from the latest 100 public GitHub events. GitHub’s native annual contribution calendar and activity remain below the profile README.",
             "",
         ]
     )

@@ -1,39 +1,51 @@
 # mhsan
 
-Competitive programmer building durable C foundations and moving toward AI engineering.
+Competitive programmer and C developer, learning toward AI engineering.
 
-[GitHub profile](https://github.com/0x7byte) · Rangpur, Bangladesh
+Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
----
-
-## Latest public updates
-
-- **23 Aug 2026** · [`fractal_tree`](https://github.com/0x7byte/fractal_tree) — public source updated.
-- **19 Apr 2026** · [`RLE_Compressor-Decompressor`](https://github.com/0x7byte/RLE_Compressor-Decompressor) — public source updated.
-- **19 Apr 2026** · [`vehicle-management-system`](https://github.com/0x7byte/vehicle-management-system) — public source updated.
-- **18 Apr 2026** · [`student-hall-management-system`](https://github.com/0x7byte/student-hall-management-system) — public source updated.
+I value precise reasoning, small correct programs, and the patience to understand systems from first principles.
 
 ---
 
-## Code to explore
+## Focus
 
-- **[fractal_tree](https://github.com/0x7byte/fractal_tree)** · `C` — Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
-- **[RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)** · `C` — Public source repository
-- **[vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)** · `C` — Public source repository
-- **[student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)** · `C` — Public source repository
+**Problem solving.** Algorithms, data structures, and the habits built through competitive programming.
 
----
+**Programming.** C projects that practice clear control flow, validation, files, and efficient representation.
 
-## Notes
-
-- Competitive programming: algorithms, data structures, and disciplined problem solving.
-- Current public work: C programs with file I/O, validation, and visual recursion.
-- AI engineering: a focused learning and building direction, grounded in systems thinking.
+**Direction.** Growing toward AI engineering through practical foundations rather than empty claims.
 
 ---
 
-## Public account
+## Public projects
 
-`05 repositories` · `131 contributions this year` · `C · Makefile`
+### [fractal_tree](https://github.com/0x7byte/fractal_tree)
+Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
 
-<sub>Generated from public GitHub repositories and events. This profile refreshes hourly; GitHub’s native contribution calendar and activity remain below.</sub>
+`C` · last updated 23 Aug 2026
+
+### [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)
+Public source repository
+
+`C` · last updated 19 Apr 2026
+
+### [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)
+Public source repository
+
+`C` · last updated 19 Apr 2026
+
+### [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)
+Public source repository
+
+`C` · last updated 18 Apr 2026
+
+---
+
+## Public presence
+
+05 public repositories. 131 contributions in the last year. Main public languages: C, Makefile.
+
+Most recently updated source: [fractal_tree](https://github.com/0x7byte/fractal_tree) on 23 Aug 2026.
+
+<sub>Public account details refresh hourly. GitHub’s own contribution calendar and activity are shown below this README.</sub>

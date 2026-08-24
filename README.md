@@ -8,15 +8,19 @@ I use competitive programming to build algorithmic discipline and translate it i
 
 ---
 
-## Coding footprint
+## 🟩 Coding Footprint in Public Source
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-dark.png?v=aa60b4b42a09">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-light.png?v=aa60b4b42a09">
-  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-light.png?v=aa60b4b42a09" alt="Live public-source coding footprint showing language-byte shares and the language of the most recently updated public project.">
-</picture>
+> **Live public data** · updated 23 Aug 2026
+> Language-byte share across 4 public development projects
 
-_This is calculated from public repository language bytes, so it shows source composition rather than private editor time._
+```text
+C          98.44%  🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨  31,455 bytes
+Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫  497 bytes
+```
+
+🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale
+
+_Calculated from public repository language bytes; it represents source composition, not private editor time._
 
 ---
 
@@ -38,6 +42,6 @@ Public source repository
 
 ## Public account
 
-5 public repositories · 0 public stars · 0 public forks · 139 contributions in the last year
+5 public repositories · 0 public stars · 0 public forks · 119 contributions in the last year
 
-<sub>Refreshes from public GitHub API data every 15 minutes and commits only when the public data changes. GitHub’s native contribution calendar and activity remain below.</sub>
+<sub>Refreshes from public GitHub API data every 15 minutes and commits only when the public data changes. This native footprint uses text and Unicode blocks, not generated images.</sub>

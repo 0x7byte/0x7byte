@@ -78,7 +78,7 @@ def compact_description(description: str | None) -> str:
     return value if len(value) <= 110 else f"{value[:107].rstrip()}…"
 
 
-def activity_compass(activity: list[tuple[str, int, float]]) -> str:
+def activity_cross(activity: list[tuple[str, int, float]]) -> str:
     values = {label: (count, share) for label, count, share in activity}
     commits, commit_share = values["Commits"]
     pulls, pull_share = values["Pull requests"]
@@ -87,11 +87,11 @@ def activity_compass(activity: list[tuple[str, int, float]]) -> str:
     return "\n".join(
         [
             "```text",
-            f"                       Code reviews  {reviews:>3} · {review_share:>3.0f}%",
-            "                                 |",
-            f"Commits  {commits:>3} · {commit_share:>3.0f}%  ----------------- + -----------------  Issues  {issues:>3} · {issue_share:>3.0f}%",
-            "                                 |",
-            f"                      Pull requests  {pulls:>3} · {pull_share:>3.0f}%",
+            f"                          CODE REVIEW  {reviews:>3} · {review_share:>3.0f}%",
+            "                                      │",
+            f"COMMITS  {commits:>3} · {commit_share:>3.0f}%  ─────────────────── ● ───────────────────  ISSUES  {issues:>3} · {issue_share:>3.0f}%",
+            "                                      │",
+            f"                       PULL REQUESTS  {pulls:>3} · {pull_share:>3.0f}%",
             "```",
         ]
     )
@@ -113,30 +113,38 @@ def build_readme(user: dict, events: list[dict]) -> str:
     lines = [
         f"# {name}",
         "",
-        f"**Competitive programmer** · {user.get('location') or 'GitHub'} · [@{user['login']}]({user['url']})",
+        f"### Competitive programmer · AI engineering direction",
         "",
-        "> Algorithmic problem solving and C foundations, with a deliberate direction toward AI engineering.",
+        "> I enjoy algorithmic problem solving, precise C foundations, and the work of turning that systems mindset toward AI engineering.",
         "",
-        "---",
-        "",
-        "### Working profile",
-        "",
-        f"- **Competitive programming:** algorithms, problem solving, and performance-aware C practice.",
-        "- **AI engineering direction:** building the foundations to move from systems thinking into practical AI work.",
-        f"- **Public code:** {languages} across **{user['repositories']['totalCount']:02d}** repositories.",
-        f"- **Latest source update:** [{repositories[0]['name']}]({repositories[0]['url']}) · {format_date(repositories[0]['updatedAt'])}.",
+        f"**{user.get('location') or 'GitHub'}** · [@{user['login']}]({user['url']}) · **{user['repositories']['totalCount']:02d}** public repositories",
         "",
         "---",
         "",
-        "### Public work",
+        "## Current arc",
+        "",
+        "**01 · Solve** — algorithms, data structures, and competitive-programming discipline.",
+        "",
+        "**02 · Build** — C projects where correctness, performance, and clear I/O matter.",
+        "",
+        "**03 · Expand** — study and build toward practical AI engineering, one real foundation at a time.",
+        "",
+        f"`{languages}` · last public source update: [{repositories[0]['name']}]({repositories[0]['url']}) on {format_date(repositories[0]['updatedAt'])}",
+        "",
+        "---",
+        "",
+        "## Build shelf",
         "",
     ]
     for repository in selected:
         language = (repository.get("primaryLanguage") or {}).get("name") or "source"
         lines.extend(
             [
-                f"- **[{repository['name']}]({repository['url']})** — {compact_description(repository.get('description'))}",
-                f"  _{language} · updated {format_date(repository['updatedAt'])}_",
+                f"### [{repository['name']}]({repository['url']})",
+                f"{compact_description(repository.get('description'))}",
+                "",
+                f"`{language}` · public source updated {format_date(repository['updatedAt'])}",
+                "",
             ]
         )
     lines.extend(
@@ -144,19 +152,19 @@ def build_readme(user: dict, events: list[dict]) -> str:
             "",
             "---",
             "",
-            "### Contribution activity",
+            "## Public signal",
             "",
             f"**{contribution_total:03d}** contributions in the last year · latest public event observed **{latest_event}**.",
             "",
-            "#### Activity compass — live public events",
+            "### Activity cross-section — live public events",
             "",
         ]
     )
     lines.extend(
         [
-            activity_compass(activity),
+            activity_cross(activity),
             "",
-            "> The compass is accessible text generated from the latest 100 public GitHub events. GitHub’s native annual contribution calendar and activity remain below the profile README.",
+            "> This native-text activity graphic is generated from the latest 100 public GitHub events. GitHub’s annual contribution calendar and activity remain below the README.",
             "",
         ]
     )

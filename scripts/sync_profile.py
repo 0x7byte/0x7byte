@@ -10,9 +10,9 @@ from datetime import datetime, timezone
 OWNER = "0x7byte"
 HTTP_TIMEOUT_SECONDS = 15
 QUERY = """
-query ProfessionalProfile($login: String!) {
+query BuilderDossierProfile($login: String!) {
   user(login: $login) {
-    login name bio location websiteUrl url
+    login name location url
     repositories(first: 100, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC, orderBy: {field: UPDATED_AT, direction: DESC}) {
       totalCount
       nodes {
@@ -22,7 +22,7 @@ query ProfessionalProfile($login: String!) {
       }
     }
     pinnedItems(first: 6, types: REPOSITORY) {
-      nodes { ... on Repository { name description url createdAt updatedAt stargazerCount forkCount isArchived primaryLanguage { name } } }
+      nodes { ... on Repository { name } }
     }
     contributionsCollection {
       contributionCalendar {
@@ -35,33 +35,36 @@ query ProfessionalProfile($login: String!) {
 """
 
 
-def github_request(url: str, accept: str = "application/vnd.github+json") -> object:
+def require_token() -> str:
     token = os.environ.get("GITHUB_TOKEN")
     if not token:
         raise RuntimeError("GITHUB_TOKEN is required for public GitHub synchronization.")
+    return token
+
+
+def public_events() -> list[dict]:
     request = urllib.request.Request(
-        url,
+        f"https://api.github.com/users/{OWNER}/events/public?per_page=30",
         headers={
-            "Accept": accept,
-            "Authorization": f"Bearer {token}",
-            "Content-Type": "application/json",
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {require_token()}",
             "User-Agent": "0x7byte-profile-sync",
         },
     )
     with urllib.request.urlopen(request, timeout=HTTP_TIMEOUT_SECONDS) as response:
-        return json.load(response)
+        payload = json.load(response)
+    if not isinstance(payload, list):
+        raise RuntimeError("GitHub public-events API returned an unexpected payload.")
+    return payload
 
 
 def account_data() -> dict:
-    token = os.environ.get("GITHUB_TOKEN")
-    if not token:
-        raise RuntimeError("GITHUB_TOKEN is required for public GitHub synchronization.")
     request = urllib.request.Request(
         "https://api.github.com/graphql",
         data=json.dumps({"query": QUERY, "variables": {"login": OWNER}}).encode("utf-8"),
         headers={
             "Accept": "application/vnd.github+json",
-            "Authorization": f"Bearer {token}",
+            "Authorization": f"Bearer {require_token()}",
             "Content-Type": "application/json",
             "User-Agent": "0x7byte-profile-sync",
         },
@@ -71,13 +74,6 @@ def account_data() -> dict:
     if payload.get("errors"):
         raise RuntimeError(f"GitHub GraphQL error: {payload['errors']}")
     return payload["data"]["user"]
-
-
-def public_events() -> list[dict]:
-    payload = github_request(f"https://api.github.com/users/{OWNER}/events/public?per_page=30")
-    if not isinstance(payload, list):
-        raise RuntimeError("GitHub public-events API returned an unexpected payload.")
-    return payload
 
 
 def format_date(value: str) -> str:
@@ -144,9 +140,7 @@ def event_summary(event: dict) -> str:
     action = payload.get("action")
     if event_type == "PushEvent":
         count = payload.get("distinct_size") or payload.get("size") or 0
-        if not count:
-            return f"Updated `{repository}`"
-        return f"Pushed {count} commit{'s' if count != 1 else ''} to `{repository}`"
+        return f"Pushed {count} commit{'s' if count != 1 else ''} to `{repository}`" if count else f"Updated `{repository}`"
     if event_type == "CreateEvent":
         return f"Created {payload.get('ref_type', 'a source item')} in `{repository}`"
     if event_type == "PublicEvent":
@@ -191,24 +185,26 @@ def latest_contribution_date(user: dict) -> str:
     return format_date(max(days, key=lambda day: day["date"])["date"] + "T00:00:00Z") if days else "no contribution recorded"
 
 
-def project_line(repository: dict, include_description: bool = True) -> list[str]:
-    language = (repository.get("primaryLanguage") or {}).get("name") or "source"
-    archived = " · archived" if repository.get("isArchived") else ""
-    line = f"**[{repository['name']}]({repository['url']})** · `{language}` · updated {format_date(repository['updatedAt'])}{archived}"
-    return [line, concise(repository.get("description")), ""] if include_description else [line]
-
-
-def workbench_entry(repository: dict, ordinal: int, is_pinned: bool) -> list[str]:
+def project_record(repository: dict, ordinal: int, is_pinned: bool, is_open: bool) -> list[str]:
     language = (repository.get("primaryLanguage") or {}).get("name") or "source"
     markers = [f"`{language}`", f"updated {format_date(repository['updatedAt'])}"]
     if is_pinned:
         markers.append("pinned")
     if repository.get("isArchived"):
         markers.append("archived")
+    star_label = "star" if repository["stargazerCount"] == 1 else "stars"
+    fork_label = "fork" if repository["forkCount"] == 1 else "forks"
     return [
-        f"**{ordinal:02d} · [{repository['name']}]({repository['url']})**",
-        " · ".join(markers),
+        f"<details{' open' if is_open else ''}>",
+        f"<summary><strong>{ordinal:02d} · {repository['name']}</strong> · {language} · updated {format_date(repository['updatedAt'])}</summary>",
+        "",
         concise(repository.get("description")),
+        "",
+        f"{' · '.join(markers)} · {repository['stargazerCount']} {star_label} · {repository['forkCount']} {fork_label}",
+        "",
+        f"[Open source →]({repository['url']})",
+        "",
+        "</details>",
         "",
     ]
 
@@ -216,62 +212,77 @@ def workbench_entry(repository: dict, ordinal: int, is_pinned: bool) -> list[str
 def build_readme(user: dict, repositories: list[dict], events: list[dict]) -> str:
     if not repositories:
         raise RuntimeError("No public non-profile repositories are available to synchronize.")
-    public_by_name = {repository["name"]: repository for repository in repositories}
-    pinned = [
-        public_by_name[item["name"]]
-        for item in user["pinnedItems"]["nodes"]
-        if item and item.get("name") in public_by_name
-    ]
-    pinned_names = {repository["name"] for repository in pinned}
+    pinned_names = {
+        item["name"] for item in user["pinnedItems"]["nodes"]
+        if item and item.get("name") in {repository["name"] for repository in repositories}
+    }
     name = user.get("name") or user["login"]
-    calendar = user["contributionsCollection"]["contributionCalendar"]
-    contribution_total = calendar["totalContributions"]
+    contribution_total = user["contributionsCollection"]["contributionCalendar"]["totalContributions"]
     total_stars = sum(repository["stargazerCount"] for repository in repositories)
     total_forks = sum(repository["forkCount"] for repository in repositories)
     newest = max(repositories, key=lambda repository: repository["updatedAt"])
     latest_event = event_summary(events[0]) if events else "No recent public event is currently available"
     latest_event_date = format_date(events[0]["created_at"]) if events else "—"
+
     lines = [
         f"# {name}",
         "",
-        "**Competitive programming · C development · AI engineering foundations**",
+        "<p align=\"center\">",
+        "  <code>competitive programming</code> · <code>C development</code> · <code>AI engineering foundations</code>",
+        "</p>",
         "",
         f"{user.get('location') or 'GitHub'} · [@{user['login']}]({user['url']})",
         "",
-        "> A public workbench for algorithmic practice, close-to-the-machine C, and the disciplined path toward useful AI systems.",
+        "> I use algorithmic practice to develop precision, build close-to-the-machine software in C, and learn the engineering foundations behind useful AI systems.",
         "",
         "---",
         "",
-        "## Live source signal",
+        "## Builder notes",
         "",
-        f"`{user['repositories']['totalCount']}` public repositories · `{total_stars}` source stars · `{total_forks}` source forks · `{contribution_total}` contributions in the last year",
+        "**Practice:** competitive programming and algorithmic problem solving.",
         "",
-        f"**Newest source:** [{newest['name']}]({newest['url']}) · updated {format_date(newest['updatedAt'])}",
+        "**Foundation:** C, data structures, and careful systems thinking.",
         "",
-        f"**Latest contribution:** {latest_contribution_date(user)} · **Latest public trace:** {latest_event_date}",
+        "**Direction:** AI engineering as a disciplined next step, built on those foundations.",
+        "",
+        "---",
+        "",
+        "## Live source heartbeat",
+        "",
+        "```text",
+        f"PUBLIC REPOSITORIES  {user['repositories']['totalCount']}",
+        f"SOURCE STARS         {total_stars}",
+        f"SOURCE FORKS         {total_forks}",
+        f"CONTRIBUTIONS        {contribution_total} in the last year",
+        f"LAST CONTRIBUTION    {latest_contribution_date(user)}",
+        f"LATEST SOURCE        {newest['name']} · {format_date(newest['updatedAt'])}",
+        "```",
         "",
         *native_footprint(repositories),
         "",
         "---",
         "",
-        "## Public workbench",
+        "## Public build records",
         "",
     ]
     for ordinal, repository in enumerate(repositories, start=1):
-        lines.extend(workbench_entry(repository, ordinal, repository["name"] in pinned_names))
+        lines.extend(project_record(repository, ordinal, repository["name"] in pinned_names, ordinal == 1))
     lines.extend(
         [
             "---",
             "",
-            "## Public trace",
+            "## Latest GitHub trace",
             "",
-            f"> **Latest event · {latest_event_date}:** {latest_event}",
+            "```text",
+            f"LATEST EVENT   {latest_event_date} · {latest_event.replace('`', '')}",
+            "SYNC WINDOW    every 15 minutes",
+            "```",
             "",
             *recent_activity(events),
             "",
             "---",
             "",
-            "<sub>Live from public GitHub data: repositories, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public work appears after the next successful sync. The Coding Footprint is native text, never an image.</sub>",
+            "<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>",
             "",
         ]
     )
@@ -284,7 +295,7 @@ if __name__ == "__main__":
     print("Synchronizing recent public activity…", flush=True)
     repositories = source_repositories(user)
     events = public_events()
-    print("Writing public workbench profile README…", flush=True)
+    print("Writing builder dossier profile README…", flush=True)
     with open("README.md", "w", encoding="utf-8") as output:
         output.write(build_readme(user, repositories, events))
-    print("Public workbench profile synchronization complete.", flush=True)
+    print("Builder dossier profile synchronization complete.", flush=True)

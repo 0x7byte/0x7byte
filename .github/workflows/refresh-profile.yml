@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install contribution graph renderer
+      - name: Install live activity renderers
         run: python3 -m pip install --disable-pip-version-check --quiet Pillow
       - name: Synchronize public account data into README
         env:
@@ -27,7 +27,7 @@ jobs:
         run: |
           git config user.name "0x7byte profile bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --force README.md assets/contribution-mix-light.png assets/contribution-mix-dark.png
+          git add --force README.md assets/source-activity-light.png assets/source-activity-dark.png assets/contribution-mix-light.png assets/contribution-mix-dark.png
           if git diff --cached --quiet; then
             echo "No public account changes to synchronize."
             exit 0

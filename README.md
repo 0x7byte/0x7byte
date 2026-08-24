@@ -1,6 +1,6 @@
 # mhsan
 
-**Competitive programmer**
+**Competitive programmer · C developer · AI engineering path**
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
@@ -42,6 +42,6 @@ Public source repository
 
 ## Public account
 
-5 public repositories · 0 public stars · 0 public forks · 140 contributions in the last year
+5 public repositories · 0 public stars · 0 public forks · 142 contributions in the last year
 
 <sub>Refreshes from public GitHub API data every 15 minutes and commits only when the public data changes. This native footprint uses text and Unicode blocks, not generated images.</sub>

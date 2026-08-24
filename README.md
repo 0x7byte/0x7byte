@@ -1,32 +1,33 @@
-# mhsan · source log
+# mhsan
 
-> **C developer** in Rangpur, Bangladesh — a public ledger that synchronizes from this account every hour.
+**C developer** · Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
-## account pulse
+## Profile snapshot
 
-| signal | live public value |
+| Field | Live public value |
 | :-- | :-- |
-| profile | [@0x7byte](https://github.com/0x7byte) |
-| source count | **05** public repositories |
-| code | C / Makefile |
-| current source | [fractal_tree](https://github.com/0x7byte/fractal_tree) · updated 23 Aug 2026 |
-| contribution year | **122** contributions |
+| Public repositories | **05** |
+| Languages | C, Makefile |
+| Latest source update | [fractal_tree](https://github.com/0x7byte/fractal_tree) · 23 Aug 2026 |
+| Contributions this year | **123** |
 
-## source ledger
+## Public projects
 
-| updated | repository | public scope |
-| :-- | :-- | :-- |
-| 23 Aug 2026 | [fractal_tree](https://github.com/0x7byte/fractal_tree) | C · Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics. |
-| 19 Apr 2026 | [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) | C · Public source repository |
-| 19 Apr 2026 | [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system) | C · Public source repository |
-| 18 Apr 2026 | [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system) | C · Public source repository |
+| Repository | Focus | Language | Updated |
+| :-- | :-- | :-- | :-- |
+| [fractal_tree](https://github.com/0x7byte/fractal_tree) | Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics. | C | 23 Aug 2026 |
+| [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) | Public source repository | C | 19 Apr 2026 |
+| [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system) | Public source repository | C | 19 Apr 2026 |
+| [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system) | Public source repository | C | 18 Apr 2026 |
 
-## contribution activity
+## Recent public contribution activity
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-dark.png?profile=source-log-v1" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-light.png?profile=source-log-v1" />
-  <img alt="Live public contribution mix" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-light.png?profile=source-log-v1" width="100%" />
-</picture>
+| Contribution type | Latest 100 public events | Share |
+| :-- | --: | --: |
+| Commits | 100 | 100% |
+| Pull requests | 0 | 0% |
+| Issues | 0 | 0% |
+| Reviews | 0 | 0% |
+| Latest observed public event | 24 Aug 2026 | — |
 
-<sub>The contribution graph is the only custom visual. It is derived from the latest 100 public GitHub events and refreshes with this profile every hour.</sub>
+> This accessible activity table replaces the graph. It refreshes from public GitHub events every hour; GitHub’s native contribution calendar and activity remain below the profile README.

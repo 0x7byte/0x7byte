@@ -173,6 +173,7 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
         for row in rows:
             route_points.append((start_x + column * (cell + gap) + cell / 2, start_y + row * (cell + gap) + cell / 2))
     path = "M " + " L ".join(f"{x:.1f} {y:.1f}" for x, y in route_points)
+    path_definition = f'<path id="snake-route" d="{path}"/>'
     food_column, food_row = divmod(food_index, 7)
     food_x = start_x + food_column * (cell + gap) + cell / 2
     food_y = start_y + food_row * (cell + gap) + cell / 2
@@ -183,7 +184,7 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
         fill = colors["snake_alt"] if segment % 2 else colors["snake"]
         body.append(
             f'<g><rect x="{-size / 2:.1f}" y="{-size / 2:.1f}" width="{size}" height="{size}" rx="{size / 2.5:.1f}" fill="{fill}" stroke="{colors["bg"]}" stroke-width="1.5"/>'
-            f'<animateMotion dur="16s" begin="{delay:.2f}s" repeatCount="indefinite" rotate="auto" path="{path}"/></g>'
+            f'<animateMotion dur="16s" begin="{delay:.2f}s" repeatCount="indefinite" rotate="auto"><mpath href="#snake-route"/></animateMotion></g>'
         )
     preview_y = start_y + 3 * (cell + gap) + cell / 2
     preview_body: list[str] = []
@@ -203,17 +204,18 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
     total = sum(day["contributionCount"] for day in days)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
 <title id="title">Live full-calendar contribution snake game</title><desc id="desc">A segmented snake with eyes moves through every row of the public GitHub contribution calendar while chasing a food target on the peak contribution day.</desc>
+<defs>{path_definition}</defs>
 <rect width="1000" height="300" rx="16" fill="{colors['bg']}"/><rect x="1" y="1" width="998" height="298" rx="15" fill="{colors['panel']}" stroke="{colors['line']}" stroke-width="2"/>
 <text x="42" y="48" fill="{colors['text']}" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CONTRIBUTION SNAKE GAME</text>
 <text x="42" y="75" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="14">live public GitHub contribution calendar · full 52-week route</text>
 <text x="958" y="48" fill="{colors['food']}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14">{total} contributions tracked</text>
 <rect x="42" y="93" width="916" height="150" rx="10" fill="{colors['bg']}" stroke="{colors['line']}"/>
 {''.join(cells)}
-<path d="{path}" fill="none" stroke="{colors['snake_alt']}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.14"/>
+<use href="#snake-route" fill="none" stroke="{colors['snake_alt']}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.14"/>
 <g transform="translate({food_x:.1f},{food_y:.1f})"><circle r="7" fill="{colors['food']}"><animate attributeName="r" values="6;8;6" dur="1.1s" repeatCount="indefinite"/></circle><path d="M0,-5 C2,-12 8,-12 8,-7" fill="none" stroke="{colors['leaf']}" stroke-width="3" stroke-linecap="round"/></g>
 {preview_snake}
 {''.join(body)}
-<g><rect x="-10" y="-9" width="20" height="18" rx="8" fill="{colors['head']}" stroke="{colors['bg']}" stroke-width="2"/><circle cx="4" cy="-4" r="2" fill="{colors['eye']}"/><circle cx="4" cy="4" r="2" fill="{colors['eye']}"/><path d="M10,0 L16,-3 M10,0 L16,3" stroke="{colors['tongue']}" stroke-width="1.7" stroke-linecap="round"/><animateMotion dur="16s" repeatCount="indefinite" rotate="auto" path="{path}"/></g>
+<g><rect x="-10" y="-9" width="20" height="18" rx="8" fill="{colors['head']}" stroke="{colors['bg']}" stroke-width="2"/><circle cx="4" cy="-4" r="2" fill="{colors['eye']}"/><circle cx="4" cy="4" r="2" fill="{colors['eye']}"/><path d="M10,0 L16,-3 M10,0 L16,3" stroke="{colors['tongue']}" stroke-width="1.7" stroke-linecap="round"/><animateMotion dur="16s" repeatCount="indefinite" rotate="auto"><mpath href="#snake-route"/></animateMotion></g>
 <line x1="42" y1="260" x2="958" y2="260" stroke="{colors['line']}" stroke-width="2"/>
 <text x="42" y="283" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="13">{active_days} active public days · green cells = contribution level · snake visits every calendar cell · red target = peak public day</text>
 </svg>'''

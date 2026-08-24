@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install snake animation renderer
+        run: python3 -m pip install --disable-pip-version-check Pillow
       - name: Synchronize professional public profile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -25,7 +27,7 @@ jobs:
         run: |
           git config user.name "0x7byte profile bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md assets/contribution-snake-light.svg assets/contribution-snake-dark.svg
+          git add README.md assets/contribution-snake.gif
           if git diff --cached --quiet; then
             echo "No public profile, repository, language, pin, or activity changes to synchronize."
             exit 0

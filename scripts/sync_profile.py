@@ -150,14 +150,15 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
     if not days:
         raise RuntimeError("No public contribution days are available for the contribution snake visual.")
     colors = {
-        "dark": {"bg": "#0d1117", "panel": "#161b22", "line": "#30363d", "text": "#c9d1d9", "muted": "#8b949e", "empty": "#21262d", "level1": "#0e4429", "level2": "#006d32", "level3": "#26a641", "level4": "#39d353", "snake": "#72e39a", "head": "#f2cc60"},
-        "light": {"bg": "#ffffff", "panel": "#f6f8fa", "line": "#d0d7de", "text": "#24292f", "muted": "#57606a", "empty": "#ebedf0", "level1": "#9be9a8", "level2": "#40c463", "level3": "#30a14e", "level4": "#216e39", "snake": "#1a7f37", "head": "#bf8700"},
+        "dark": {"bg": "#0d1117", "panel": "#161b22", "line": "#30363d", "text": "#c9d1d9", "muted": "#8b949e", "empty": "#21262d", "level1": "#0e4429", "level2": "#006d32", "level3": "#26a641", "level4": "#39d353", "snake": "#3dcc72", "snake_alt": "#72e39a", "head": "#8af5a8", "eye": "#0d1117", "tongue": "#ff6b6b", "food": "#f85149", "leaf": "#3fb950"},
+        "light": {"bg": "#ffffff", "panel": "#f6f8fa", "line": "#d0d7de", "text": "#24292f", "muted": "#57606a", "empty": "#ebedf0", "level1": "#9be9a8", "level2": "#40c463", "level3": "#30a14e", "level4": "#216e39", "snake": "#2da44e", "snake_alt": "#1a7f37", "head": "#59c36a", "eye": "#ffffff", "tongue": "#cf222e", "food": "#cf222e", "leaf": "#1a7f37"},
     }[theme]
     maximum = max(day["contributionCount"] for day in days) or 1
     cell, gap = 13, 4
     start_x, start_y = 54, 105
     columns = max(1, (len(days) + 6) // 7)
     cells: list[str] = []
+    food_index = max(range(len(days)), key=lambda index: days[index]["contributionCount"])
     for index, day in enumerate(days):
         count = day["contributionCount"]
         level = 0 if count == 0 else min(4, max(1, round(count * 4 / maximum)))
@@ -166,29 +167,55 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
         x, y = start_x + column * (cell + gap), start_y + row * (cell + gap)
         date_label = escape(f"{day['date']}: {count} contributions")
         cells.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{fill}"><title>{date_label}</title></rect>')
-    route_columns = list(range(max(0, columns - 18), columns))
     route_points: list[tuple[float, float]] = []
-    for offset, column in enumerate(route_columns):
-        row = 1 if offset % 2 == 0 else 5
-        route_points.append((start_x + column * (cell + gap) + cell / 2, start_y + row * (cell + gap) + cell / 2))
+    for column in range(columns):
+        rows = range(7) if column % 2 == 0 else range(6, -1, -1)
+        for row in rows:
+            route_points.append((start_x + column * (cell + gap) + cell / 2, start_y + row * (cell + gap) + cell / 2))
     path = "M " + " L ".join(f"{x:.1f} {y:.1f}" for x, y in route_points)
-    head_start = route_points[0]
+    food_column, food_row = divmod(food_index, 7)
+    food_x = start_x + food_column * (cell + gap) + cell / 2
+    food_y = start_y + food_row * (cell + gap) + cell / 2
+    body: list[str] = []
+    for segment in range(12, 0, -1):
+        delay = -segment * 0.32
+        size = 12 if segment < 5 else 10
+        fill = colors["snake_alt"] if segment % 2 else colors["snake"]
+        body.append(
+            f'<g><rect x="{-size / 2:.1f}" y="{-size / 2:.1f}" width="{size}" height="{size}" rx="{size / 2.5:.1f}" fill="{fill}" stroke="{colors["bg"]}" stroke-width="1.5"/>'
+            f'<animateMotion dur="16s" begin="{delay:.2f}s" repeatCount="indefinite" rotate="auto" path="{path}"/></g>'
+        )
+    preview_y = start_y + 3 * (cell + gap) + cell / 2
+    preview_body: list[str] = []
+    for segment in range(10):
+        preview_x = start_x + segment * (cell + gap) + cell / 2
+        fill = colors["snake_alt"] if segment % 2 else colors["snake"]
+        preview_body.append(f'<circle cx="{preview_x:.1f}" cy="{preview_y:.1f}" r="6.2" fill="{fill}" stroke="{colors["bg"]}" stroke-width="1.5"/>')
+    preview_head_x = start_x + 10 * (cell + gap) + cell / 2
+    preview_snake = (
+        f'<g><title>Snake game preview: the animated snake traverses the full calendar</title>{"".join(preview_body)}'
+        f'<rect x="{preview_head_x - 9:.1f}" y="{preview_y - 8:.1f}" width="19" height="16" rx="7" fill="{colors["head"]}" stroke="{colors["bg"]}" stroke-width="2"/>'
+        f'<circle cx="{preview_head_x + 3:.1f}" cy="{preview_y - 4:.1f}" r="1.8" fill="{colors["eye"]}"/><circle cx="{preview_head_x + 3:.1f}" cy="{preview_y + 4:.1f}" r="1.8" fill="{colors["eye"]}"/>'
+        f'<path d="M{preview_head_x + 9:.1f},{preview_y:.1f} L{preview_head_x + 15:.1f},{preview_y - 3:.1f} M{preview_head_x + 9:.1f},{preview_y:.1f} L{preview_head_x + 15:.1f},{preview_y + 3:.1f}" stroke="{colors["tongue"]}" stroke-width="1.7" stroke-linecap="round"/>'
+        f'</g>'
+    )
     active_days = sum(1 for day in days if day["contributionCount"] > 0)
     total = sum(day["contributionCount"] for day in days)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
-<title id="title">Live contribution snake tracker</title><desc id="desc">A snake-game animation crossing the public GitHub contribution chart for the last 52 weeks.</desc>
+<title id="title">Live full-calendar contribution snake game</title><desc id="desc">A segmented snake with eyes moves through every row of the public GitHub contribution calendar while chasing a food target on the peak contribution day.</desc>
 <rect width="1000" height="300" rx="16" fill="{colors['bg']}"/><rect x="1" y="1" width="998" height="298" rx="15" fill="{colors['panel']}" stroke="{colors['line']}" stroke-width="2"/>
-<text x="42" y="48" fill="{colors['text']}" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CONTRIBUTION SNAKE TRACKER</text>
-<text x="42" y="75" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="14">live public GitHub contribution chart · last 52 weeks</text>
-<text x="958" y="48" fill="{colors['head']}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14">{total} contributions tracked</text>
+<text x="42" y="48" fill="{colors['text']}" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CONTRIBUTION SNAKE GAME</text>
+<text x="42" y="75" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="14">live public GitHub contribution calendar · full 52-week route</text>
+<text x="958" y="48" fill="{colors['food']}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14">{total} contributions tracked</text>
 <rect x="42" y="93" width="916" height="150" rx="10" fill="{colors['bg']}" stroke="{colors['line']}"/>
 {''.join(cells)}
-<path d="{path}" fill="none" stroke="{colors['snake']}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
-<path d="{path}" fill="none" stroke="{colors['snake']}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="18 10"><animate attributeName="stroke-dashoffset" values="0;-224" dur="3.2s" repeatCount="indefinite"/></path>
-<circle cx="{head_start[0]:.1f}" cy="{head_start[1]:.1f}" r="9" fill="{colors['head']}" stroke="{colors['bg']}" stroke-width="3"><animateMotion dur="7s" repeatCount="indefinite" path="{path}"/></circle>
-<circle cx="{head_start[0] - 3:.1f}" cy="{head_start[1] - 2:.1f}" r="1.5" fill="{colors['bg']}"><animateMotion dur="7s" repeatCount="indefinite" path="{path}"/></circle>
+<path d="{path}" fill="none" stroke="{colors['snake_alt']}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.14"/>
+<g transform="translate({food_x:.1f},{food_y:.1f})"><circle r="7" fill="{colors['food']}"><animate attributeName="r" values="6;8;6" dur="1.1s" repeatCount="indefinite"/></circle><path d="M0,-5 C2,-12 8,-12 8,-7" fill="none" stroke="{colors['leaf']}" stroke-width="3" stroke-linecap="round"/></g>
+{preview_snake}
+{''.join(body)}
+<g><rect x="-10" y="-9" width="20" height="18" rx="8" fill="{colors['head']}" stroke="{colors['bg']}" stroke-width="2"/><circle cx="4" cy="-4" r="2" fill="{colors['eye']}"/><circle cx="4" cy="4" r="2" fill="{colors['eye']}"/><path d="M10,0 L16,-3 M10,0 L16,3" stroke="{colors['tongue']}" stroke-width="1.7" stroke-linecap="round"/><animateMotion dur="16s" repeatCount="indefinite" rotate="auto" path="{path}"/></g>
 <line x1="42" y1="260" x2="958" y2="260" stroke="{colors['line']}" stroke-width="2"/>
-<text x="42" y="283" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="13">{active_days} active public days · green cells = contribution level · animated snake = tracker route</text>
+<text x="42" y="283" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="13">{active_days} active public days · green cells = contribution level · snake visits every calendar cell · red target = peak public day</text>
 </svg>'''
 
 

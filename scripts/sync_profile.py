@@ -5,6 +5,8 @@ import os
 import urllib.request
 from collections import Counter
 from datetime import datetime, timezone
+from hashlib import sha256
+from html import escape
 
 
 OWNER = "0x7byte"
@@ -128,9 +130,74 @@ def native_footprint(repositories: list[dict]) -> list[str]:
         "```",
         "",
         "🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale",
-        "",
-        "_Calculated from public repository language bytes. It represents source composition, not private editor time._",
     ]
+
+
+def contribution_days(user: dict, limit: int = 28) -> list[dict]:
+    days = [
+        day for week in user["contributionsCollection"]["contributionCalendar"]["weeks"]
+        for day in week["contributionDays"]
+    ]
+    return days[-limit:]
+
+
+def contribution_version(days: list[dict]) -> str:
+    data = [(day["date"], day["contributionCount"]) for day in days]
+    return sha256(json.dumps(data, separators=(",", ":")).encode("utf-8")).hexdigest()[:12]
+
+
+def contribution_blocks_svg(days: list[dict], theme: str) -> str:
+    if not days:
+        raise RuntimeError("No public contribution days are available for the contribution block visual.")
+    colors = {
+        "dark": {"bg": "#0d1117", "panel": "#161b22", "line": "#30363d", "text": "#c9d1d9", "muted": "#8b949e", "block": "#56c271", "block_alt": "#78d58b", "accent": "#e5b94c", "empty": "#21262d"},
+        "light": {"bg": "#ffffff", "panel": "#f6f8fa", "line": "#d0d7de", "text": "#24292f", "muted": "#57606a", "block": "#2da44e", "block_alt": "#55b46c", "accent": "#bf8700", "empty": "#d8dee4"},
+    }[theme]
+    maximum = max(day["contributionCount"] for day in days) or 1
+    block_width, block_height, gap = 25, 22, 5
+    start_x, floor_y = 58, 244
+    blocks: list[str] = []
+    for index, day in enumerate(days):
+        count = day["contributionCount"]
+        height = 0 if count == 0 else min(4, max(1, round(count * 4 / maximum)))
+        x = start_x + index * (block_width + gap)
+        blocks.append(f'<rect x="{x}" y="{floor_y - 2}" width="{block_width}" height="2" rx="1" fill="{colors['empty']}"/>')
+        for level in range(height):
+            y = floor_y - (level + 1) * (block_height + gap)
+            delay = (index * 0.12 + level * 0.08) % 3.2
+            fill = colors['accent'] if level == height - 1 and count == maximum else (colors['block_alt'] if level % 2 else colors['block'])
+            label = escape(f"{day['date']}: {count} contributions")
+            blocks.append(
+                f'<rect x="{x}" y="{y}" width="{block_width}" height="{block_height}" rx="4" fill="{fill}" opacity="0.34"/>'
+                f'<g transform="translate(0,-12)" opacity="0">'
+                f'<title>{label}</title><rect x="{x}" y="{y}" width="{block_width}" height="{block_height}" rx="4" fill="{fill}"/>'
+                f'<rect x="{x + 3}" y="{y + 3}" width="{block_width - 6}" height="2" rx="1" fill="#ffffff" opacity="0.28"/>'
+                f'<animateTransform attributeName="transform" type="translate" values="0 -12;0 0;0 0;0 -12" keyTimes="0;0.08;0.85;1" dur="8s" begin="{delay:.2f}s" repeatCount="indefinite"/>'
+                f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="8s" begin="{delay:.2f}s" repeatCount="indefinite"/>'
+                f'</g>'
+            )
+    active_days = sum(1 for day in days if day["contributionCount"] > 0)
+    total = sum(day["contributionCount"] for day in days)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
+<title id="title">Live contribution block run</title><desc id="desc">A game-like block animation generated from the last 28 public GitHub contribution days.</desc>
+<rect width="1000" height="300" rx="16" fill="{colors['bg']}"/><rect x="1" y="1" width="998" height="298" rx="15" fill="{colors['panel']}" stroke="{colors['line']}" stroke-width="2"/>
+<text x="42" y="48" fill="{colors['text']}" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CONTRIBUTION BLOCK RUN</text>
+<text x="42" y="75" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="14">live public contribution data · last 28 days</text>
+<text x="958" y="48" fill="{colors['accent']}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14">{total} blocks scored</text>
+<line x1="42" y1="253" x2="958" y2="253" stroke="{colors['line']}" stroke-width="2"/>
+{''.join(blocks)}
+<text x="42" y="280" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="13">{active_days} active public days · green blocks = contribution level · yellow block = peak day</text>
+</svg>'''
+
+
+def render_contribution_blocks(user: dict) -> str:
+    days = contribution_days(user)
+    version = contribution_version(days)
+    os.makedirs("assets", exist_ok=True)
+    for theme in ("light", "dark"):
+        with open(f"assets/contribution-blocks-{theme}.svg", "w", encoding="utf-8") as output:
+            output.write(contribution_blocks_svg(days, theme))
+    return version
 
 
 def event_summary(event: dict) -> str:
@@ -209,7 +276,7 @@ def project_record(repository: dict, ordinal: int, is_pinned: bool, is_open: boo
     ]
 
 
-def build_readme(user: dict, repositories: list[dict], events: list[dict]) -> str:
+def build_readme(user: dict, repositories: list[dict], events: list[dict], contribution_blocks_version: str) -> str:
     if not repositories:
         raise RuntimeError("No public non-profile repositories are available to synchronize.")
     pinned_names = {
@@ -228,26 +295,12 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict]) -> st
         f"# {name}",
         "",
         "<p align=\"center\">",
-        "  <code>competitive programming</code> · <code>C / C++</code> · <code>Python data stack</code> · <code>ONNX models</code>",
+        "  <code>competitive programming</code> · <code>C / C++ / Java</code> · <code>Python Libraries</code> · <code>ONNX</code>",
         "</p>",
         "",
         f"{user.get('location') or 'GitHub'} · [@{user['login']}]({user['url']})",
         "",
         "> I use algorithmic practice to develop precision, build close-to-the-machine software in C and C++, and extend those foundations through Python data work and ONNX models.",
-        "",
-        "---",
-        "",
-        "## Builder notes",
-        "",
-        "**Practice:** competitive programming and algorithmic problem solving.",
-        "",
-        "**Core:** C and C++, custom data structures, object-oriented programming, and careful systems thinking.",
-        "",
-        "**Data work:** Python, NumPy, pandas, Matplotlib, and Seaborn.",
-        "",
-        "**Model foundation:** ONNX models.",
-        "",
-        "**Direction:** AI engineering as a disciplined next step, built on these foundations.",
         "",
         "---",
         "",
@@ -263,6 +316,18 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict]) -> st
         "```",
         "",
         *native_footprint(repositories),
+        "",
+        "---",
+        "",
+        "## Contribution blocks",
+        "",
+        "<picture>",
+        f"  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-blocks-dark.svg?v={contribution_blocks_version}\">",
+        f"  <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-blocks-light.svg?v={contribution_blocks_version}\">",
+        f"  <img src=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-blocks-light.svg?v={contribution_blocks_version}\" alt=\"Live public contribution block animation for the last 28 days.\">",
+        "</picture>",
+        "",
+        "_A building-block run animated from public GitHub contribution days. It refreshes with the scheduled profile sync._",
         "",
         "---",
         "",
@@ -299,7 +364,8 @@ if __name__ == "__main__":
     print("Synchronizing recent public activity…", flush=True)
     repositories = source_repositories(user)
     events = public_events()
+    contribution_blocks_version = render_contribution_blocks(user)
     print("Writing builder dossier profile README…", flush=True)
     with open("README.md", "w", encoding="utf-8") as output:
-        output.write(build_readme(user, repositories, events))
+        output.write(build_readme(user, repositories, events, contribution_blocks_version))
     print("Builder dossier profile synchronization complete.", flush=True)

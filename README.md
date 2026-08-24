@@ -1,8 +1,7 @@
 ## mhsan
 
-> C developer · Rangpur, Bangladesh
-
-`C` · `raylib` · `Git` · `Bash` · `Linux`
+**C developer** · Rangpur, Bangladesh  
+<sub>C · raylib · Git · Bash · Linux</sub>
 
 ---
 
@@ -16,12 +15,14 @@
 
 ---
 
-### Public work
+### Selected work
 
-- [Fractal Tree](https://github.com/0x7byte/fractal_tree) — recursive graphics and real-time rendering.
-- [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) — reversible run-length encoding in C.
-- [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system) — records, authentication, meals, and billing.
-- [Vehicle Management System](https://github.com/0x7byte/vehicle-management-system) — structured CRUD workflows in C.
+| Project | Focus |
+| :-- | :-- |
+| [Fractal Tree](https://github.com/0x7byte/fractal_tree) | Recursive graphics · real-time rendering |
+| [RLE Compressor / Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) | Reversible run-length encoding in C |
+| [Student Hall Management System](https://github.com/0x7byte/student-hall-management-system) | Records · authentication · meals · billing |
+| [Vehicle Management System](https://github.com/0x7byte/vehicle-management-system) | Structured CRUD workflows in C |
 
 ---
 

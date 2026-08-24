@@ -14,7 +14,7 @@ I use competitive programming to sharpen algorithmic thinking, then apply that d
 
 | Public repositories | Source stars | Source forks | Contributions · last 12 months | Latest contribution |
 |---:|---:|---:|---:|---|
-| 5 | 0 | 0 | 142 | 24 Aug 2026 |
+| 5 | 0 | 0 | 143 | 24 Aug 2026 |
 
 > **Newest public source:** [fractal_tree](https://github.com/0x7byte/fractal_tree) · updated 23 Aug 2026
 

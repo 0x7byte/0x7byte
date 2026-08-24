@@ -46,7 +46,7 @@ C developer · Rangpur, Bangladesh
 
 ### Activity overview
 
-**117** public contributions in the last year · calculated live from GitHub.
+**120** public contributions in the last year · calculated live from GitHub.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-dark.png?profile=ouuan-live-v2" />

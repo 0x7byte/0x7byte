@@ -8,6 +8,7 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
 > I use algorithmic practice to develop precision, build close-to-the-machine software in C and C++, and extend those foundations through Python data work and ONNX models.
 
+---
 
 ## Live source heartbeat
 
@@ -15,7 +16,7 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 PUBLIC REPOSITORIES  5
 SOURCE STARS         0
 SOURCE FORKS         0
-CONTRIBUTIONS        148 in the last year
+CONTRIBUTIONS        142 in the last year
 LAST CONTRIBUTION    24 Aug 2026
 LATEST SOURCE        fractal_tree · 23 Aug 2026
 ```
@@ -31,6 +32,17 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale
 
+---
+
+## Contribution blocks
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-blocks-dark.svg?v=33ec4779d808">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-blocks-light.svg?v=33ec4779d808">
+  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-blocks-light.svg?v=33ec4779d808" alt="Live public contribution block animation for the last 28 days.">
+</picture>
+
+_A building-block run animated from public GitHub contribution days. It refreshes with the scheduled profile sync._
 
 ---
 
@@ -81,3 +93,16 @@ Public source repository
 </details>
 
 ---
+
+## Latest GitHub trace
+
+```text
+LATEST EVENT   24 Aug 2026 · Updated 0x7byte/0x7byte
+SYNC WINDOW    every 15 minutes
+```
+
+- **24 Aug 2026** — Updated `0x7byte/0x7byte`
+
+---
+
+<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>

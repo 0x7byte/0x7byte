@@ -1,20 +1,21 @@
 # mhsan
 
-**C developer** · Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
+**Competitive programmer** · Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
+
+> Algorithmic problem solving and C foundations, with a deliberate direction toward AI engineering.
 
 ---
 
-### Snapshot
+### Working profile
 
-**05** public repositories · **124** contributions this year
-
-**Languages:** C, Makefile
-
-**Latest source update:** [fractal_tree](https://github.com/0x7byte/fractal_tree) · 23 Aug 2026
+- **Competitive programming:** algorithms, problem solving, and performance-aware C practice.
+- **AI engineering direction:** building the foundations to move from systems thinking into practical AI work.
+- **Public code:** C, Makefile across **05** repositories.
+- **Latest source update:** [fractal_tree](https://github.com/0x7byte/fractal_tree) · 23 Aug 2026.
 
 ---
 
-### Selected public source
+### Public work
 
 - **[fractal_tree](https://github.com/0x7byte/fractal_tree)** — Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
   _C · updated 23 Aug 2026_
@@ -27,14 +28,18 @@
 
 ---
 
-### Recent public contribution activity
+### Contribution activity
 
-| Contribution type | Latest 100 public events | Share |
-| :-- | --: | --: |
-| Commits | 100 | 100% |
-| Pull requests | 0 | 0% |
-| Issues | 0 | 0% |
-| Reviews | 0 | 0% |
-| Latest observed public event | 24 Aug 2026 | — |
+**117** contributions in the last year · latest public event observed **24 Aug 2026**.
 
-> Live public data refreshes every hour. GitHub’s native contribution calendar and activity remain below the profile README.
+#### Activity compass — live public events
+
+```text
+                       Code reviews    0 ·   0%
+                                 |
+Commits  100 · 100%  ----------------- + -----------------  Issues    0 ·   0%
+                                 |
+                      Pull requests    0 ·   0%
+```
+
+> The compass is accessible text generated from the latest 100 public GitHub events. GitHub’s native annual contribution calendar and activity remain below the profile README.

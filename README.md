@@ -16,7 +16,7 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 PUBLIC REPOSITORIES  5
 SOURCE STARS         0
 SOURCE FORKS         0
-CONTRIBUTIONS        158 in the last year
+CONTRIBUTIONS        160 in the last year
 LAST CONTRIBUTION    24 Aug 2026
 LATEST SOURCE        fractal_tree · 23 Aug 2026
 ```
@@ -36,7 +36,7 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 ## Contribution snake tracker
 
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=190a762cdbb5" alt="Tested animated snake-game tracker running across the public GitHub contribution chart.">
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=2f7029013631" alt="Tested animated snake-game tracker running across the public GitHub contribution chart.">
 
 _A tested snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._
 

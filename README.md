@@ -14,16 +14,16 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
 ```text
 PUBLIC REPOSITORIES  5
-SOURCE STARS         0
+SOURCE STARS         1
 SOURCE FORKS         0
-CONTRIBUTIONS        160 in the last year
+CONTRIBUTIONS        161 in the last year
 LAST CONTRIBUTION    24 Aug 2026
-LATEST SOURCE        fractal_tree · 23 Aug 2026
+LATEST SOURCE        fractal_tree · 24 Aug 2026
 ```
 
 ## Coding Footprint in Public Source
 
-> **Live public data** · 4 public development repositories · latest source update 23 Aug 2026
+> **Live public data** · 4 public development repositories · latest source update 24 Aug 2026
 
 ```text
 C          98.44%  🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨  31,455 bytes
@@ -36,7 +36,7 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 ## Contribution snake tracker
 
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=cd3988317581" alt="Tested animated snake-game tracker running across the public GitHub contribution chart.">
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=014d7698700c" alt="Tested animated snake-game tracker running across the public GitHub contribution chart.">
 
 _A tested snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._
 
@@ -45,11 +45,11 @@ _A tested snake-game tracker crossing the public GitHub contribution chart. It r
 ## Public build records
 
 <details open>
-<summary><strong>01 · fractal_tree</strong> · C · updated 23 Aug 2026</summary>
+<summary><strong>01 · fractal_tree</strong> · C · updated 24 Aug 2026</summary>
 
 Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
 
-`C` · updated 23 Aug 2026 · 0 stars · 0 forks
+`C` · updated 24 Aug 2026 · 1 star · 0 forks
 
 [Open source →](https://github.com/0x7byte/fractal_tree)
 
@@ -93,10 +93,13 @@ Public source repository
 ## Latest GitHub trace
 
 ```text
-LATEST EVENT   24 Aug 2026 · Updated 0x7byte/0x7byte
+LATEST EVENT   24 Aug 2026 · Updated 0x7byte/vehicle-management-system
 SYNC WINDOW    every 15 minutes
 ```
 
+- **24 Aug 2026** — Updated `0x7byte/vehicle-management-system`
+- **24 Aug 2026** — Updated `0x7byte/RLE_Compressor-Decompressor`
+- **24 Aug 2026** — Starred `0x7byte/fractal_tree`
 - **24 Aug 2026** — Updated `0x7byte/0x7byte`
 
 ---

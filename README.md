@@ -1,22 +1,20 @@
 # mhsan
 
-**Competitive programmer · C developer · AI engineering path**
+**Competitive programming · C development · AI engineering foundations**
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
+> A public workbench for algorithmic practice, close-to-the-machine C, and the disciplined path toward useful AI systems.
+
 ---
 
-## Professional brief
+## Live source signal
 
-I use competitive programming to sharpen algorithmic thinking, then apply that discipline to careful systems-level work in C. My current direction is learning how to engineer reliable foundations for useful AI systems.
+`5` public repositories · `0` source stars · `0` source forks · `142` contributions in the last year
 
-## Live public account
+**Newest source:** [fractal_tree](https://github.com/0x7byte/fractal_tree) · updated 23 Aug 2026
 
-| Public repositories | Source stars | Source forks | Contributions · last 12 months | Latest contribution |
-|---:|---:|---:|---:|---|
-| 5 | 0 | 0 | 143 | 24 Aug 2026 |
-
-> **Newest public source:** [fractal_tree](https://github.com/0x7byte/fractal_tree) · updated 23 Aug 2026
+**Latest contribution:** 24 Aug 2026 · **Latest public trace:** 24 Aug 2026
 
 ## Coding Footprint in Public Source
 
@@ -33,25 +31,27 @@ _Calculated from public repository language bytes. It represents source composit
 
 ---
 
-## Source portfolio
+## Public workbench
 
-### Recently updated public source
-
-**[fractal_tree](https://github.com/0x7byte/fractal_tree)** · `C` · updated 23 Aug 2026
+**01 · [fractal_tree](https://github.com/0x7byte/fractal_tree)**
+`C` · updated 23 Aug 2026
 Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
 
-**[RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)** · `C` · updated 19 Apr 2026
+**02 · [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)**
+`C` · updated 19 Apr 2026
 Public source repository
 
-**[vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)** · `C` · updated 19 Apr 2026
+**03 · [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)**
+`C` · updated 19 Apr 2026
 Public source repository
 
-**[student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)** · `C` · updated 18 Apr 2026
+**04 · [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)**
+`C` · updated 18 Apr 2026
 Public source repository
 
 ---
 
-## Recent public activity
+## Public trace
 
 > **Latest event · 24 Aug 2026:** Updated `0x7byte/0x7byte`
 
@@ -59,4 +59,4 @@ Public source repository
 
 ---
 
-<sub>This profile synchronizes public GitHub profile fields, repositories, pins, repository updates, language bytes, stars, forks, contribution totals, and public activity every 15 minutes. New public repositories and public repository changes appear after the next successful sync. The Coding Footprint is native text, not an image.</sub>
+<sub>Live from public GitHub data: repositories, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public work appears after the next successful sync. The Coding Footprint is native text, never an image.</sub>

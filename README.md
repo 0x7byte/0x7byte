@@ -82,10 +82,3 @@ Public source repository
 </details>
 
 ---
-
-## Latest GitHub trace
-
-```text
-LATEST EVENT   24 Aug 2026
-SYNC WINDOW    every 15 minutes
-```

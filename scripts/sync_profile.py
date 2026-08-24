@@ -144,7 +144,7 @@ def contribution_days(user: dict) -> list[dict]:
 
 def contribution_version(days: list[dict]) -> str:
     data = {
-        "renderer": "tested-gif-snake-v1",
+        "renderer": "tested-gif-snake-v2-full-body",
         "days": [(day["date"], day["contributionCount"]) for day in days],
     }
     return sha256(json.dumps(data, separators=(",", ":")).encode("utf-8")).hexdigest()[:12]
@@ -188,8 +188,9 @@ def contribution_snake_gif_frame(days: list[dict], frame_index: int, frame_total
     food_y = start_y + food_row * (cell + gap) + cell // 2
     draw.ellipse((food_x - 5, food_y - 5, food_x + 5, food_y + 5), fill=colors["food"])
     draw.arc((food_x, food_y - 8, food_x + 9, food_y + 1), 190, 340, fill=colors["leaf"], width=2)
-    head_index = int(frame_index * (len(route_points) - 1) / max(1, frame_total - 1))
-    body_indices = [max(0, head_index - offset) for offset in range(14, -1, -1)]
+    body_length = 14
+    head_index = body_length + int(frame_index * (len(route_points) - 1 - body_length) / max(1, frame_total - 1))
+    body_indices = [head_index - offset for offset in range(body_length, -1, -1)]
     body_points = [route_points[index] for index in body_indices]
     if len(body_points) > 1:
         draw.line(body_points, fill=colors["snake_alt"], width=11, joint="curve")

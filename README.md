@@ -85,14 +85,14 @@ Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, 
 ## Latest GitHub trace
 
 ```text
-LATEST EVENT   24 Aug 2026 · Updated 0x7byte/0x7byte
+LATEST EVENT   24 Aug 2026 · Updated 0x7byte/fractal_tree
 SYNC WINDOW    every 5 minutes
 ```
 
+- **24 Aug 2026** — Updated `0x7byte/fractal_tree`
+- **24 Aug 2026** — Updated `0x7byte/student-hall-management-system`
 - **24 Aug 2026** — Updated `0x7byte/0x7byte`
 - **24 Aug 2026** — Starred `0x7byte/0x7byte`
-- **24 Aug 2026** — Updated `0x7byte/vehicle-management-system`
-- **24 Aug 2026** — Updated `0x7byte/RLE_Compressor-Decompressor`
 
 ---
 

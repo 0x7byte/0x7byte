@@ -8,14 +8,15 @@ I use competitive programming to build algorithmic discipline and translate it i
 
 ---
 
-## Coding footprint in public source
+## Coding footprint
 
-| Language | Public code share | Footprint |
-| --- | ---: | --- |
-| C | 98% | `████████████████████` |
-| Makefile | 2% | `█░░░░░░░░░░░░░░░░░░░` |
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-dark.png?profile=colorful-v1">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-light.png?profile=colorful-v1">
+  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-light.png?profile=colorful-v1" alt="Live public-source coding footprint showing language-byte shares and the language of the most recently updated public project.">
+</picture>
 
-_Live language-byte share across public, non-fork repositories. This is a public-source footprint, not a time tracker._
+_This is calculated from public repository language bytes, so it shows source composition rather than private editor time._
 
 ---
 
@@ -37,6 +38,6 @@ Public source repository
 
 ## Public account
 
-5 public repositories · 0 public stars · 0 public forks · 134 contributions in the last year
+5 public repositories · 0 public stars · 0 public forks · 119 contributions in the last year
 
-<sub>Refreshed 24 Aug 2026, 09:32 UTC from public GitHub account, repository, and language data. GitHub’s native contribution calendar and activity remain below.</sub>
+<sub>Refreshed 24 Aug 2026, 09:37 UTC from public GitHub account, repository, and language data. GitHub’s native contribution calendar and activity remain below.</sub>

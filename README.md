@@ -11,9 +11,9 @@ I use competitive programming to build algorithmic discipline and translate it i
 ## Coding footprint
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-dark.png?v=d09e0c59f2c2">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-light.png?v=d09e0c59f2c2">
-  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-light.png?v=d09e0c59f2c2" alt="Live public-source coding footprint showing language-byte shares and the language of the most recently updated public project.">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-dark.png?v=aa60b4b42a09">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-light.png?v=aa60b4b42a09">
+  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/coding-footprint-light.png?v=aa60b4b42a09" alt="Live public-source coding footprint showing language-byte shares and the language of the most recently updated public project.">
 </picture>
 
 _This is calculated from public repository language bytes, so it shows source composition rather than private editor time._
@@ -38,6 +38,6 @@ Public source repository
 
 ## Public account
 
-5 public repositories · 0 public stars · 0 public forks · 119 contributions in the last year
+5 public repositories · 0 public stars · 0 public forks · 139 contributions in the last year
 
 <sub>Refreshes from public GitHub API data every 15 minutes and commits only when the public data changes. GitHub’s native contribution calendar and activity remain below.</sub>

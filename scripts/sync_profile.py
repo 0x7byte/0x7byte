@@ -158,7 +158,7 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
     }[theme]
     maximum = max(day["contributionCount"] for day in days) or 1
     cell, gap = 13, 4
-    start_x, start_y = 54, 105
+    start_x, start_y = 58, 109
     columns = max(1, (len(days) + 6) // 7)
     cells: list[str] = []
     food_index = max(range(len(days)), key=lambda index: days[index]["contributionCount"])
@@ -177,11 +177,12 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
             route_points.append((start_x + column * (cell + gap) + cell / 2, start_y + row * (cell + gap) + cell / 2))
     path = "M " + " L ".join(f"{x:.1f} {y:.1f}" for x, y in route_points)
     path_definition = f'<path id="snake-route" d="{path}"/>'
+    grid_clip = '<clipPath id="grid-clip"><rect x="42" y="93" width="916" height="150" rx="10"/></clipPath>'
     food_column, food_row = divmod(food_index, 7)
     food_x = start_x + food_column * (cell + gap) + cell / 2
     food_y = start_y + food_row * (cell + gap) + cell / 2
     snake_sprite = (
-        f'<g><title>Continuous snake moving through the full contribution calendar</title>'
+        f'<g clip-path="url(#grid-clip)"><title>Continuous snake moving through the full contribution calendar</title>'
         f'<path d="M-142,0 C-124,-14 -106,14 -88,0 S-52,-14 -34,0 S-16,14 0,0" fill="none" stroke="{colors["snake_alt"]}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>'
         f'<path d="M-142,0 C-124,-14 -106,14 -88,0 S-52,-14 -34,0 S-16,14 0,0" fill="none" stroke="{colors["snake"]}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 7"/>'
         f'<rect x="-10" y="-9" width="21" height="18" rx="8" fill="{colors["head"]}" stroke="{colors["bg"]}" stroke-width="2"/>'
@@ -193,7 +194,7 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
     total = sum(day["contributionCount"] for day in days)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
 <title id="title">Live full-calendar contribution snake game</title><desc id="desc">A segmented snake with eyes moves through every row of the public GitHub contribution calendar while chasing a food target on the peak contribution day.</desc>
-<defs>{path_definition}</defs>
+<defs>{path_definition}{grid_clip}</defs>
 <rect width="1000" height="300" rx="16" fill="{colors['bg']}"/><rect x="1" y="1" width="998" height="298" rx="15" fill="{colors['panel']}" stroke="{colors['line']}" stroke-width="2"/>
 <text x="42" y="48" fill="{colors['text']}" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CONTRIBUTION SNAKE GAME</text>
 <text x="42" y="75" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="14">live public GitHub contribution calendar · full 52-week route</text>

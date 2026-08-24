@@ -7,6 +7,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from hashlib import sha256
 from html import escape
+from PIL import Image, ImageDraw, ImageFont
 
 
 OWNER = "0x7byte"
@@ -143,79 +144,82 @@ def contribution_days(user: dict) -> list[dict]:
 
 def contribution_version(days: list[dict]) -> str:
     data = {
-        "renderer": "continuous-snake-v2",
+        "renderer": "tested-gif-snake-v1",
         "days": [(day["date"], day["contributionCount"]) for day in days],
     }
     return sha256(json.dumps(data, separators=(",", ":")).encode("utf-8")).hexdigest()[:12]
 
 
-def contribution_snake_svg(days: list[dict], theme: str) -> str:
+def contribution_snake_gif_frame(days: list[dict], frame_index: int, frame_total: int = 24) -> Image.Image:
     if not days:
         raise RuntimeError("No public contribution days are available for the contribution snake visual.")
-    colors = {
-        "dark": {"bg": "#0d1117", "panel": "#161b22", "line": "#30363d", "text": "#c9d1d9", "muted": "#8b949e", "empty": "#21262d", "level1": "#0e4429", "level2": "#006d32", "level3": "#26a641", "level4": "#39d353", "snake": "#3dcc72", "snake_alt": "#72e39a", "head": "#8af5a8", "eye": "#0d1117", "tongue": "#ff6b6b", "food": "#f85149", "leaf": "#3fb950"},
-        "light": {"bg": "#ffffff", "panel": "#f6f8fa", "line": "#d0d7de", "text": "#24292f", "muted": "#57606a", "empty": "#ebedf0", "level1": "#9be9a8", "level2": "#40c463", "level3": "#30a14e", "level4": "#216e39", "snake": "#2da44e", "snake_alt": "#1a7f37", "head": "#59c36a", "eye": "#ffffff", "tongue": "#cf222e", "food": "#cf222e", "leaf": "#1a7f37"},
-    }[theme]
+    colors = {"bg": "#0d1117", "panel": "#161b22", "line": "#30363d", "text": "#c9d1d9", "muted": "#8b949e", "empty": "#21262d", "level1": "#0e4429", "level2": "#006d32", "level3": "#26a641", "level4": "#39d353", "snake": "#39d353", "snake_alt": "#70e890", "head": "#a7f3b8", "eye": "#0d1117", "tongue": "#ff6b6b", "food": "#f85149", "leaf": "#3fb950"}
+    width, height = 840, 230
+    image = Image.new("RGB", (width, height), colors["bg"])
+    draw = ImageDraw.Draw(image)
+    font = ImageFont.load_default()
+    draw.rounded_rectangle((0, 0, width - 1, height - 1), radius=14, fill=colors["panel"], outline=colors["line"], width=2)
+    draw.text((24, 20), "CONTRIBUTION SNAKE GAME", fill=colors["text"], font=font)
+    draw.text((24, 39), "live public GitHub contribution calendar · tested frame sequence", fill=colors["muted"], font=font)
     maximum = max(day["contributionCount"] for day in days) or 1
-    cell, gap = 13, 4
-    start_x, start_y = 58, 109
+    cell, gap = 10, 3
+    start_x, start_y = 26, 78
     columns = max(1, (len(days) + 6) // 7)
-    cells: list[str] = []
+    board_right = start_x + columns * (cell + gap) - gap + 10
+    board_bottom = start_y + 7 * (cell + gap) - gap + 10
+    draw.rounded_rectangle((16, 66, board_right, board_bottom), radius=8, fill=colors["bg"], outline=colors["line"], width=1)
     food_index = max(range(len(days)), key=lambda index: days[index]["contributionCount"])
+    centers: list[tuple[int, int]] = []
     for index, day in enumerate(days):
         count = day["contributionCount"]
         level = 0 if count == 0 else min(4, max(1, round(count * 4 / maximum)))
         fill = colors["empty"] if level == 0 else colors[f"level{level}"]
         column, row = divmod(index, 7)
         x, y = start_x + column * (cell + gap), start_y + row * (cell + gap)
-        date_label = escape(f"{day['date']}: {count} contributions")
-        cells.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{fill}"><title>{date_label}</title></rect>')
-    route_points: list[tuple[float, float]] = []
+        draw.rounded_rectangle((x, y, x + cell, y + cell), radius=2, fill=fill)
+        centers.append((x + cell // 2, y + cell // 2))
+    route_points: list[tuple[int, int]] = []
     for column in range(columns):
         rows = range(7) if column % 2 == 0 else range(6, -1, -1)
         for row in rows:
             route_points.append((start_x + column * (cell + gap) + cell / 2, start_y + row * (cell + gap) + cell / 2))
-    path = "M " + " L ".join(f"{x:.1f} {y:.1f}" for x, y in route_points)
-    path_definition = f'<path id="snake-route" d="{path}"/>'
-    grid_clip = '<clipPath id="grid-clip"><rect x="42" y="93" width="916" height="150" rx="10"/></clipPath>'
     food_column, food_row = divmod(food_index, 7)
-    food_x = start_x + food_column * (cell + gap) + cell / 2
-    food_y = start_y + food_row * (cell + gap) + cell / 2
-    snake_sprite = (
-        f'<g clip-path="url(#grid-clip)"><title>Continuous snake moving through the full contribution calendar</title>'
-        f'<path d="M-142,0 C-124,-14 -106,14 -88,0 S-52,-14 -34,0 S-16,14 0,0" fill="none" stroke="{colors["snake_alt"]}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>'
-        f'<path d="M-142,0 C-124,-14 -106,14 -88,0 S-52,-14 -34,0 S-16,14 0,0" fill="none" stroke="{colors["snake"]}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 7"/>'
-        f'<rect x="-10" y="-9" width="21" height="18" rx="8" fill="{colors["head"]}" stroke="{colors["bg"]}" stroke-width="2"/>'
-        f'<circle cx="4" cy="-4" r="2" fill="{colors["eye"]}"/><circle cx="4" cy="4" r="2" fill="{colors["eye"]}"/>'
-        f'<path d="M10,0 L17,-3 M10,0 L17,3" stroke="{colors["tongue"]}" stroke-width="1.8" stroke-linecap="round"/>'
-        f'<animateMotion dur="16s" repeatCount="indefinite" rotate="auto"><mpath href="#snake-route"/></animateMotion></g>'
-    )
+    food_x = start_x + food_column * (cell + gap) + cell // 2
+    food_y = start_y + food_row * (cell + gap) + cell // 2
+    draw.ellipse((food_x - 5, food_y - 5, food_x + 5, food_y + 5), fill=colors["food"])
+    draw.arc((food_x, food_y - 8, food_x + 9, food_y + 1), 190, 340, fill=colors["leaf"], width=2)
+    head_index = int(frame_index * (len(route_points) - 1) / max(1, frame_total - 1))
+    body_indices = [max(0, head_index - offset) for offset in range(14, -1, -1)]
+    body_points = [route_points[index] for index in body_indices]
+    if len(body_points) > 1:
+        draw.line(body_points, fill=colors["snake_alt"], width=11, joint="curve")
+        draw.line(body_points, fill=colors["snake"], width=6, joint="curve")
+    for x, y in body_points[:-1]:
+        draw.ellipse((x - 3, y - 3, x + 3, y + 3), fill=colors["snake"])
+    head_x, head_y = body_points[-1]
+    draw.rounded_rectangle((head_x - 7, head_y - 6, head_x + 7, head_y + 6), radius=5, fill=colors["head"], outline=colors["bg"], width=1)
+    draw.ellipse((head_x + 1, head_y - 4, head_x + 3, head_y - 2), fill=colors["eye"])
+    draw.ellipse((head_x + 1, head_y + 2, head_x + 3, head_y + 4), fill=colors["eye"])
+    draw.line((head_x + 7, head_y, head_x + 11, head_y - 2), fill=colors["tongue"], width=1)
+    draw.line((head_x + 7, head_y, head_x + 11, head_y + 2), fill=colors["tongue"], width=1)
     active_days = sum(1 for day in days if day["contributionCount"] > 0)
     total = sum(day["contributionCount"] for day in days)
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
-<title id="title">Live full-calendar contribution snake game</title><desc id="desc">A segmented snake with eyes moves through every row of the public GitHub contribution calendar while chasing a food target on the peak contribution day.</desc>
-<defs>{path_definition}{grid_clip}</defs>
-<rect width="1000" height="300" rx="16" fill="{colors['bg']}"/><rect x="1" y="1" width="998" height="298" rx="15" fill="{colors['panel']}" stroke="{colors['line']}" stroke-width="2"/>
-<text x="42" y="48" fill="{colors['text']}" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CONTRIBUTION SNAKE GAME</text>
-<text x="42" y="75" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="14">live public GitHub contribution calendar · full 52-week route</text>
-<text x="958" y="48" fill="{colors['food']}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14">{total} contributions tracked</text>
-<rect x="42" y="93" width="916" height="150" rx="10" fill="{colors['bg']}" stroke="{colors['line']}"/>
-{''.join(cells)}
-<use href="#snake-route" fill="none" stroke="{colors['snake_alt']}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.14"/>
-<g transform="translate({food_x:.1f},{food_y:.1f})"><circle r="7" fill="{colors['food']}"><animate attributeName="r" values="6;8;6" dur="1.1s" repeatCount="indefinite"/></circle><path d="M0,-5 C2,-12 8,-12 8,-7" fill="none" stroke="{colors['leaf']}" stroke-width="3" stroke-linecap="round"/></g>
-{snake_sprite}
-<line x1="42" y1="260" x2="958" y2="260" stroke="{colors['line']}" stroke-width="2"/>
-<text x="42" y="283" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="13">{active_days} active public days · green cells = contribution level · snake visits every calendar cell · red target = peak public day</text>
-</svg>'''
+    draw.line((16, 194, width - 16, 194), fill=colors["line"], width=1)
+    draw.text((24, 204), f"{active_days} active public days · {total} contributions · one connected snake visits the full grid", fill=colors["muted"], font=font)
+    return image
 
 
 def render_contribution_snake(user: dict) -> str:
     days = contribution_days(user)
     version = contribution_version(days)
     os.makedirs("assets", exist_ok=True)
-    for theme in ("light", "dark"):
-        with open(f"assets/contribution-snake-{theme}.svg", "w", encoding="utf-8") as output:
-            output.write(contribution_snake_svg(days, theme))
+    frames = [contribution_snake_gif_frame(days, index) for index in range(24)]
+    frames[0].save("assets/contribution-snake.gif", save_all=True, append_images=frames[1:], duration=130, loop=0, disposal=2, optimize=True)
+    test_dir = os.environ.get("SNAKE_TEST_FRAMES_DIR")
+    if test_dir:
+        os.makedirs(test_dir, exist_ok=True)
+        for index in (0, 6, 12, 18, 23):
+            frames[index].save(os.path.join(test_dir, f"snake-state-{index:02d}.png"))
     return version
 
 
@@ -340,13 +344,9 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict], contr
         "",
         "## Contribution snake tracker",
         "",
-        "<picture>",
-        f"  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake-dark.svg?v={contribution_snake_version}\">",
-        f"  <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake-light.svg?v={contribution_snake_version}\">",
-        f"  <img src=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake-light.svg?v={contribution_snake_version}\" alt=\"Live snake-game tracker running across the public GitHub contribution chart.\">",
-        "</picture>",
+        f"<img src=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake.gif?v={contribution_snake_version}\" alt=\"Tested animated snake-game tracker running across the public GitHub contribution chart.\">",
         "",
-        "_A snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._",
+        "_A tested snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._",
         "",
         "---",
         "",

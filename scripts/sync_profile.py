@@ -133,12 +133,12 @@ def native_footprint(repositories: list[dict]) -> list[str]:
     ]
 
 
-def contribution_days(user: dict, limit: int = 28) -> list[dict]:
+def contribution_days(user: dict) -> list[dict]:
     days = [
         day for week in user["contributionsCollection"]["contributionCalendar"]["weeks"]
         for day in week["contributionDays"]
     ]
-    return days[-limit:]
+    return days
 
 
 def contribution_version(days: list[dict]) -> str:
@@ -146,57 +146,59 @@ def contribution_version(days: list[dict]) -> str:
     return sha256(json.dumps(data, separators=(",", ":")).encode("utf-8")).hexdigest()[:12]
 
 
-def contribution_blocks_svg(days: list[dict], theme: str) -> str:
+def contribution_snake_svg(days: list[dict], theme: str) -> str:
     if not days:
-        raise RuntimeError("No public contribution days are available for the contribution block visual.")
+        raise RuntimeError("No public contribution days are available for the contribution snake visual.")
     colors = {
-        "dark": {"bg": "#0d1117", "panel": "#161b22", "line": "#30363d", "text": "#c9d1d9", "muted": "#8b949e", "block": "#56c271", "block_alt": "#78d58b", "accent": "#e5b94c", "empty": "#21262d"},
-        "light": {"bg": "#ffffff", "panel": "#f6f8fa", "line": "#d0d7de", "text": "#24292f", "muted": "#57606a", "block": "#2da44e", "block_alt": "#55b46c", "accent": "#bf8700", "empty": "#d8dee4"},
+        "dark": {"bg": "#0d1117", "panel": "#161b22", "line": "#30363d", "text": "#c9d1d9", "muted": "#8b949e", "empty": "#21262d", "level1": "#0e4429", "level2": "#006d32", "level3": "#26a641", "level4": "#39d353", "snake": "#72e39a", "head": "#f2cc60"},
+        "light": {"bg": "#ffffff", "panel": "#f6f8fa", "line": "#d0d7de", "text": "#24292f", "muted": "#57606a", "empty": "#ebedf0", "level1": "#9be9a8", "level2": "#40c463", "level3": "#30a14e", "level4": "#216e39", "snake": "#1a7f37", "head": "#bf8700"},
     }[theme]
     maximum = max(day["contributionCount"] for day in days) or 1
-    block_width, block_height, gap = 25, 22, 5
-    start_x, floor_y = 58, 244
-    blocks: list[str] = []
+    cell, gap = 13, 4
+    start_x, start_y = 54, 105
+    columns = max(1, (len(days) + 6) // 7)
+    cells: list[str] = []
     for index, day in enumerate(days):
         count = day["contributionCount"]
-        height = 0 if count == 0 else min(4, max(1, round(count * 4 / maximum)))
-        x = start_x + index * (block_width + gap)
-        blocks.append(f'<rect x="{x}" y="{floor_y - 2}" width="{block_width}" height="2" rx="1" fill="{colors['empty']}"/>')
-        for level in range(height):
-            y = floor_y - (level + 1) * (block_height + gap)
-            delay = (index * 0.12 + level * 0.08) % 3.2
-            fill = colors['accent'] if level == height - 1 and count == maximum else (colors['block_alt'] if level % 2 else colors['block'])
-            label = escape(f"{day['date']}: {count} contributions")
-            blocks.append(
-                f'<rect x="{x}" y="{y}" width="{block_width}" height="{block_height}" rx="4" fill="{fill}" opacity="0.34"/>'
-                f'<g transform="translate(0,-12)" opacity="0">'
-                f'<title>{label}</title><rect x="{x}" y="{y}" width="{block_width}" height="{block_height}" rx="4" fill="{fill}"/>'
-                f'<rect x="{x + 3}" y="{y + 3}" width="{block_width - 6}" height="2" rx="1" fill="#ffffff" opacity="0.28"/>'
-                f'<animateTransform attributeName="transform" type="translate" values="0 -12;0 0;0 0;0 -12" keyTimes="0;0.08;0.85;1" dur="8s" begin="{delay:.2f}s" repeatCount="indefinite"/>'
-                f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="8s" begin="{delay:.2f}s" repeatCount="indefinite"/>'
-                f'</g>'
-            )
+        level = 0 if count == 0 else min(4, max(1, round(count * 4 / maximum)))
+        fill = colors["empty"] if level == 0 else colors[f"level{level}"]
+        column, row = divmod(index, 7)
+        x, y = start_x + column * (cell + gap), start_y + row * (cell + gap)
+        date_label = escape(f"{day['date']}: {count} contributions")
+        cells.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{fill}"><title>{date_label}</title></rect>')
+    route_columns = list(range(max(0, columns - 18), columns))
+    route_points: list[tuple[float, float]] = []
+    for offset, column in enumerate(route_columns):
+        row = 1 if offset % 2 == 0 else 5
+        route_points.append((start_x + column * (cell + gap) + cell / 2, start_y + row * (cell + gap) + cell / 2))
+    path = "M " + " L ".join(f"{x:.1f} {y:.1f}" for x, y in route_points)
+    head_start = route_points[0]
     active_days = sum(1 for day in days if day["contributionCount"] > 0)
     total = sum(day["contributionCount"] for day in days)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="title desc">
-<title id="title">Live contribution block run</title><desc id="desc">A game-like block animation generated from the last 28 public GitHub contribution days.</desc>
+<title id="title">Live contribution snake tracker</title><desc id="desc">A snake-game animation crossing the public GitHub contribution chart for the last 52 weeks.</desc>
 <rect width="1000" height="300" rx="16" fill="{colors['bg']}"/><rect x="1" y="1" width="998" height="298" rx="15" fill="{colors['panel']}" stroke="{colors['line']}" stroke-width="2"/>
-<text x="42" y="48" fill="{colors['text']}" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CONTRIBUTION BLOCK RUN</text>
-<text x="42" y="75" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="14">live public contribution data · last 28 days</text>
-<text x="958" y="48" fill="{colors['accent']}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14">{total} blocks scored</text>
-<line x1="42" y1="253" x2="958" y2="253" stroke="{colors['line']}" stroke-width="2"/>
-{''.join(blocks)}
-<text x="42" y="280" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="13">{active_days} active public days · green blocks = contribution level · yellow block = peak day</text>
+<text x="42" y="48" fill="{colors['text']}" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">CONTRIBUTION SNAKE TRACKER</text>
+<text x="42" y="75" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="14">live public GitHub contribution chart · last 52 weeks</text>
+<text x="958" y="48" fill="{colors['head']}" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14">{total} contributions tracked</text>
+<rect x="42" y="93" width="916" height="150" rx="10" fill="{colors['bg']}" stroke="{colors['line']}"/>
+{''.join(cells)}
+<path d="{path}" fill="none" stroke="{colors['snake']}" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+<path d="{path}" fill="none" stroke="{colors['snake']}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="18 10"><animate attributeName="stroke-dashoffset" values="0;-224" dur="3.2s" repeatCount="indefinite"/></path>
+<circle cx="{head_start[0]:.1f}" cy="{head_start[1]:.1f}" r="9" fill="{colors['head']}" stroke="{colors['bg']}" stroke-width="3"><animateMotion dur="7s" repeatCount="indefinite" path="{path}"/></circle>
+<circle cx="{head_start[0] - 3:.1f}" cy="{head_start[1] - 2:.1f}" r="1.5" fill="{colors['bg']}"><animateMotion dur="7s" repeatCount="indefinite" path="{path}"/></circle>
+<line x1="42" y1="260" x2="958" y2="260" stroke="{colors['line']}" stroke-width="2"/>
+<text x="42" y="283" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="13">{active_days} active public days · green cells = contribution level · animated snake = tracker route</text>
 </svg>'''
 
 
-def render_contribution_blocks(user: dict) -> str:
+def render_contribution_snake(user: dict) -> str:
     days = contribution_days(user)
     version = contribution_version(days)
     os.makedirs("assets", exist_ok=True)
     for theme in ("light", "dark"):
-        with open(f"assets/contribution-blocks-{theme}.svg", "w", encoding="utf-8") as output:
-            output.write(contribution_blocks_svg(days, theme))
+        with open(f"assets/contribution-snake-{theme}.svg", "w", encoding="utf-8") as output:
+            output.write(contribution_snake_svg(days, theme))
     return version
 
 
@@ -276,7 +278,7 @@ def project_record(repository: dict, ordinal: int, is_pinned: bool, is_open: boo
     ]
 
 
-def build_readme(user: dict, repositories: list[dict], events: list[dict], contribution_blocks_version: str) -> str:
+def build_readme(user: dict, repositories: list[dict], events: list[dict], contribution_snake_version: str) -> str:
     if not repositories:
         raise RuntimeError("No public non-profile repositories are available to synchronize.")
     pinned_names = {
@@ -319,15 +321,15 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict], contr
         "",
         "---",
         "",
-        "## Contribution blocks",
+        "## Contribution snake tracker",
         "",
         "<picture>",
-        f"  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-blocks-dark.svg?v={contribution_blocks_version}\">",
-        f"  <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-blocks-light.svg?v={contribution_blocks_version}\">",
-        f"  <img src=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-blocks-light.svg?v={contribution_blocks_version}\" alt=\"Live public contribution block animation for the last 28 days.\">",
+        f"  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake-dark.svg?v={contribution_snake_version}\">",
+        f"  <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake-light.svg?v={contribution_snake_version}\">",
+        f"  <img src=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake-light.svg?v={contribution_snake_version}\" alt=\"Live snake-game tracker running across the public GitHub contribution chart.\">",
         "</picture>",
         "",
-        "_A building-block run animated from public GitHub contribution days. It refreshes with the scheduled profile sync._",
+        "_A snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._",
         "",
         "---",
         "",
@@ -364,8 +366,8 @@ if __name__ == "__main__":
     print("Synchronizing recent public activity…", flush=True)
     repositories = source_repositories(user)
     events = public_events()
-    contribution_blocks_version = render_contribution_blocks(user)
+    contribution_snake_version = render_contribution_snake(user)
     print("Writing builder dossier profile README…", flush=True)
     with open("README.md", "w", encoding="utf-8") as output:
-        output.write(build_readme(user, repositories, events, contribution_blocks_version))
+        output.write(build_readme(user, repositories, events, contribution_snake_version))
     print("Builder dossier profile synchronization complete.", flush=True)

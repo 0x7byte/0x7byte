@@ -1,12 +1,12 @@
 # mhsan
 
 <p align="center">
-  <code>competitive programming</code> · <code>C development</code> · <code>AI engineering foundations</code>
+  <code>competitive programming</code> · <code>C / C++</code> · <code>Python data stack</code> · <code>ONNX models</code>
 </p>
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
-> I use algorithmic practice to develop precision, build close-to-the-machine software in C, and learn the engineering foundations behind useful AI systems.
+> I use algorithmic practice to develop precision, build close-to-the-machine software in C and C++, and extend those foundations through Python data work and ONNX models.
 
 ---
 
@@ -14,9 +14,13 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
 **Practice:** competitive programming and algorithmic problem solving.
 
-**Foundation:** C, data structures, and careful systems thinking.
+**Core:** C and C++, custom data structures, object-oriented programming, and careful systems thinking.
 
-**Direction:** AI engineering as a disciplined next step, built on those foundations.
+**Data work:** Python, NumPy, pandas, Matplotlib, and Seaborn.
+
+**Model foundation:** ONNX models.
+
+**Direction:** AI engineering as a disciplined next step, built on these foundations.
 
 ---
 
@@ -26,7 +30,7 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 PUBLIC REPOSITORIES  5
 SOURCE STARS         0
 SOURCE FORKS         0
-CONTRIBUTIONS        147 in the last year
+CONTRIBUTIONS        142 in the last year
 LAST CONTRIBUTION    24 Aug 2026
 LATEST SOURCE        fractal_tree · 23 Aug 2026
 ```

@@ -1,4 +1,4 @@
-name: Synchronize Public Coding Footprint
+name: Synchronize Colorful Public Coding Footprint
 
 on:
   schedule:
@@ -17,7 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Synchronize public coding footprint
+      - name: Install footprint renderer
+        run: python3 -m pip install --disable-pip-version-check --quiet Pillow
+      - name: Synchronize colorful public coding footprint
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/sync_profile.py
@@ -25,10 +27,10 @@ jobs:
         run: |
           git config user.name "0x7byte profile bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
+          git add README.md assets/coding-footprint-light.png assets/coding-footprint-dark.png
           if git diff --cached --quiet; then
             echo "No public account changes to synchronize."
             exit 0
           fi
-          git commit -m "chore: synchronize public coding footprint"
+          git commit -m "chore: synchronize colorful public coding footprint"
           git push

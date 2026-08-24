@@ -198,6 +198,21 @@ def project_line(repository: dict, include_description: bool = True) -> list[str
     return [line, concise(repository.get("description")), ""] if include_description else [line]
 
 
+def workbench_entry(repository: dict, ordinal: int, is_pinned: bool) -> list[str]:
+    language = (repository.get("primaryLanguage") or {}).get("name") or "source"
+    markers = [f"`{language}`", f"updated {format_date(repository['updatedAt'])}"]
+    if is_pinned:
+        markers.append("pinned")
+    if repository.get("isArchived"):
+        markers.append("archived")
+    return [
+        f"**{ordinal:02d} · [{repository['name']}]({repository['url']})**",
+        " · ".join(markers),
+        concise(repository.get("description")),
+        "",
+    ]
+
+
 def build_readme(user: dict, repositories: list[dict], events: list[dict]) -> str:
     if not repositories:
         raise RuntimeError("No public non-profile repositories are available to synchronize.")
@@ -208,7 +223,6 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict]) -> st
         if item and item.get("name") in public_by_name
     ]
     pinned_names = {repository["name"] for repository in pinned}
-    recent = [repository for repository in repositories if repository["name"] not in pinned_names][:6]
     name = user.get("name") or user["login"]
     calendar = user["contributionsCollection"]["contributionCalendar"]
     contribution_total = calendar["totalContributions"]
@@ -220,47 +234,36 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict]) -> st
     lines = [
         f"# {name}",
         "",
-        "**Competitive programmer · C developer · AI engineering path**",
+        "**Competitive programming · C development · AI engineering foundations**",
         "",
         f"{user.get('location') or 'GitHub'} · [@{user['login']}]({user['url']})",
         "",
+        "> A public workbench for algorithmic practice, close-to-the-machine C, and the disciplined path toward useful AI systems.",
+        "",
         "---",
         "",
-        "## Professional brief",
+        "## Live source signal",
         "",
-        "I use competitive programming to sharpen algorithmic thinking, then apply that discipline to careful systems-level work in C. My current direction is learning how to engineer reliable foundations for useful AI systems.",
+        f"`{user['repositories']['totalCount']}` public repositories · `{total_stars}` source stars · `{total_forks}` source forks · `{contribution_total}` contributions in the last year",
         "",
-        "## Live public account",
+        f"**Newest source:** [{newest['name']}]({newest['url']}) · updated {format_date(newest['updatedAt'])}",
         "",
-        "| Public repositories | Source stars | Source forks | Contributions · last 12 months | Latest contribution |",
-        "|---:|---:|---:|---:|---|",
-        f"| {user['repositories']['totalCount']} | {total_stars} | {total_forks} | {contribution_total} | {latest_contribution_date(user)} |",
-        "",
-        f"> **Newest public source:** [{newest['name']}]({newest['url']}) · updated {format_date(newest['updatedAt'])}",
+        f"**Latest contribution:** {latest_contribution_date(user)} · **Latest public trace:** {latest_event_date}",
         "",
         *native_footprint(repositories),
         "",
         "---",
         "",
-        "## Source portfolio",
+        "## Public workbench",
         "",
     ]
-    if pinned:
-        lines.extend(["### Pinned public source", ""])
-        for repository in pinned:
-            lines.extend(project_line(repository))
-    if recent:
-        lines.extend(["### Recently updated public source", ""])
-        for repository in recent:
-            lines.extend(project_line(repository))
-    if len(repositories) > len(pinned) + len(recent):
-        remaining = len(repositories) - len(pinned) - len(recent)
-        lines.extend([f"_{remaining} additional public source {'repository remains' if remaining == 1 else 'repositories remain'} included in the live account total and language footprint._", ""])
+    for ordinal, repository in enumerate(repositories, start=1):
+        lines.extend(workbench_entry(repository, ordinal, repository["name"] in pinned_names))
     lines.extend(
         [
             "---",
             "",
-            "## Recent public activity",
+            "## Public trace",
             "",
             f"> **Latest event · {latest_event_date}:** {latest_event}",
             "",
@@ -268,7 +271,7 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict]) -> st
             "",
             "---",
             "",
-            "<sub>This profile synchronizes public GitHub profile fields, repositories, pins, repository updates, language bytes, stars, forks, contribution totals, and public activity every 15 minutes. New public repositories and public repository changes appear after the next successful sync. The Coding Footprint is native text, not an image.</sub>",
+            "<sub>Live from public GitHub data: repositories, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public work appears after the next successful sync. The Coding Footprint is native text, never an image.</sub>",
             "",
         ]
     )
@@ -281,7 +284,7 @@ if __name__ == "__main__":
     print("Synchronizing recent public activity…", flush=True)
     repositories = source_repositories(user)
     events = public_events()
-    print("Writing professional profile README…", flush=True)
+    print("Writing public workbench profile README…", flush=True)
     with open("README.md", "w", encoding="utf-8") as output:
         output.write(build_readme(user, repositories, events))
-    print("Professional profile synchronization complete.", flush=True)
+    print("Public workbench profile synchronization complete.", flush=True)

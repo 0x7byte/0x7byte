@@ -16,7 +16,7 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 PUBLIC REPOSITORIES  5
 SOURCE STARS         1
 SOURCE FORKS         0
-CONTRIBUTIONS        161 in the last year
+CONTRIBUTIONS        162 in the last year
 LAST CONTRIBUTION    24 Aug 2026
 LATEST SOURCE        student-hall-management-system · 24 Aug 2026
 ```
@@ -32,13 +32,7 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale
 
----
-
-## Contribution snake tracker
-
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=014d7698700c" alt="Tested animated snake-game tracker running across the public GitHub contribution chart.">
-
----
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=abecfdf9f72e" alt="Animated contribution snake tracker across the complete public GitHub contribution calendar." width="100%">
 
 ## Public build records
 
@@ -96,9 +90,9 @@ SYNC WINDOW    every 15 minutes
 ```
 
 - **24 Aug 2026** — Updated `0x7byte/0x7byte`
+- **24 Aug 2026** — Starred `0x7byte/0x7byte`
 - **24 Aug 2026** — Updated `0x7byte/vehicle-management-system`
 - **24 Aug 2026** — Updated `0x7byte/RLE_Compressor-Decompressor`
-- **24 Aug 2026** — Starred `0x7byte/fractal_tree`
 
 ---
 

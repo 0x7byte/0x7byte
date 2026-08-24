@@ -144,7 +144,7 @@ def contribution_days(user: dict) -> list[dict]:
 
 def contribution_version(days: list[dict]) -> str:
     data = {
-        "renderer": "active-cell-snake-v1",
+        "renderer": "active-cell-snake-v2-board-only",
         "days": [(day["date"], day["contributionCount"]) for day in days],
     }
     return sha256(json.dumps(data, separators=(",", ":")).encode("utf-8")).hexdigest()[:12]
@@ -188,21 +188,18 @@ def active_cell_route(days: list[dict], columns: int) -> tuple[list[tuple[int, i
 def contribution_snake_gif_frame(days: list[dict], frame_index: int, frame_total: int = 48) -> Image.Image:
     if not days:
         raise RuntimeError("No public contribution days are available for the contribution snake visual.")
-    colors = {"bg": "#0d1117", "panel": "#161b22", "line": "#30363d", "text": "#c9d1d9", "muted": "#8b949e", "empty": "#21262d", "level1": "#0e4429", "level2": "#006d32", "level3": "#26a641", "level4": "#39d353", "snake": "#39d353", "snake_alt": "#70e890", "head": "#a7f3b8", "eye": "#0d1117", "tongue": "#ff6b6b", "food": "#f85149", "leaf": "#3fb950"}
-    width, height = 840, 230
+    colors = {"bg": "#0d1117", "empty": "#21262d", "level1": "#0e4429", "level2": "#006d32", "level3": "#26a641", "level4": "#39d353", "snake": "#39d353", "snake_alt": "#70e890", "head": "#a7f3b8", "eye": "#0d1117", "tongue": "#ff6b6b", "food": "#f85149", "leaf": "#3fb950"}
+    columns = max(1, (len(days) + 6) // 7)
+    width, margin, gap = 840, 12, 3
+    cell = max(8, min(14, (width - (2 * margin) - ((columns - 1) * gap)) // columns))
+    board_width = (columns * cell) + ((columns - 1) * gap)
+    board_height = (7 * cell) + (6 * gap)
+    height = board_height + (2 * margin)
     image = Image.new("RGB", (width, height), colors["bg"])
     draw = ImageDraw.Draw(image)
-    font = ImageFont.load_default()
-    draw.rounded_rectangle((0, 0, width - 1, height - 1), radius=14, fill=colors["panel"], outline=colors["line"], width=2)
-    draw.text((24, 20), "CONTRIBUTION SNAKE GAME", fill=colors["text"], font=font)
-    draw.text((24, 39), "live active-cell snake game · slower varied-turn route", fill=colors["muted"], font=font)
     maximum = max(day["contributionCount"] for day in days) or 1
-    cell, gap = 10, 3
-    start_x, start_y = 26, 78
-    columns = max(1, (len(days) + 6) // 7)
-    board_right = start_x + columns * (cell + gap) - gap + 10
-    board_bottom = start_y + 7 * (cell + gap) - gap + 10
-    draw.rounded_rectangle((16, 66, board_right, board_bottom), radius=8, fill=colors["bg"], outline=colors["line"], width=1)
+    start_x = (width - board_width) // 2
+    start_y = (height - board_height) // 2
     route, active_points, target_order = active_cell_route(days, columns)
     body_length = 5
     first_head = min(body_length, len(route) - 1)
@@ -244,10 +241,6 @@ def contribution_snake_gif_frame(days: list[dict], frame_index: int, frame_total
         draw.ellipse((head_x - 2, head_y + sign, head_x - 1, head_y + sign + 1), fill=colors["eye"])
         draw.ellipse((head_x + 1, head_y + sign, head_x + 2, head_y + sign + 1), fill=colors["eye"])
         draw.line((head_x, head_y + sign * 4, head_x + 1, head_y + sign * 7), fill=colors["tongue"], width=1)
-    active_days = sum(1 for day in days if day["contributionCount"] > 0)
-    total = sum(day["contributionCount"] for day in days)
-    draw.line((16, 194, width - 16, 194), fill=colors["line"], width=1)
-    draw.text((24, 204), f"{active_days} active public days · {len(eaten)}/{len(active_points)} eaten · slower varied-turn path", fill=colors["muted"], font=font)
     return image
 
 
@@ -382,15 +375,7 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict], contr
         "",
         *native_footprint(repositories),
         "",
-        "---",
-        "",
-        "## Contribution snake tracker",
-        "",
-        f"<img src=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake.gif?v={contribution_snake_version}\" alt=\"Tested animated snake-game tracker running across the public GitHub contribution chart.\">",
-        "",
-        "_A tested snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._",
-        "",
-        "---",
+        f"<img src=\"https://raw.githubusercontent.com/{OWNER}/{OWNER}/main/assets/contribution-snake.gif?v={contribution_snake_version}\" alt=\"Animated contribution snake tracker across the complete public GitHub contribution calendar.\" width=\"100%\">",
         "",
         "## Public build records",
         "",

@@ -2,19 +2,19 @@
 
 C developer · Rangpur, Bangladesh
 
-- **Public profile:** [@0x7byte](https://github.com/0x7byte) · synchronized from GitHub
-- **Current public work:** [fractal_tree](https://github.com/0x7byte/fractal_tree) · C
-- **Public code languages:** C · Makefile
-- **Automatic sync:** profile, repository, pinned-work, language, and activity data refresh every hour.
+- **Profile:** [@0x7byte](https://github.com/0x7byte) · public GitHub account
+- **Current source:** [fractal_tree](https://github.com/0x7byte/fractal_tree) · C
+- **Code languages:** C · Makefile
+- **Sync:** public profile and repository information refresh automatically every hour.
 
 ---
 
-### Latest public updates
+### Latest source updates
 
-- 23 Aug 2026 — public source updated: [`fractal_tree`](https://github.com/0x7byte/fractal_tree)
-- 19 Apr 2026 — public source updated: [`RLE_Compressor-Decompressor`](https://github.com/0x7byte/RLE_Compressor-Decompressor)
-- 19 Apr 2026 — public source updated: [`vehicle-management-system`](https://github.com/0x7byte/vehicle-management-system)
-- 18 Apr 2026 — public source updated: [`student-hall-management-system`](https://github.com/0x7byte/student-hall-management-system)
+- 23 Aug 2026 — [`fractal_tree`](https://github.com/0x7byte/fractal_tree) updated
+- 19 Apr 2026 — [`RLE_Compressor-Decompressor`](https://github.com/0x7byte/RLE_Compressor-Decompressor) updated
+- 19 Apr 2026 — [`vehicle-management-system`](https://github.com/0x7byte/vehicle-management-system) updated
+- 18 Apr 2026 — [`student-hall-management-system`](https://github.com/0x7byte/student-hall-management-system) updated
 
 ---
 
@@ -34,24 +34,8 @@ C developer · Rangpur, Bangladesh
 
 ---
 
-### Recent public source activity
+### Public activity
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/source-activity-dark.png?profile=ouuan-live-v1" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/source-activity-light.png?profile=ouuan-live-v1" />
-  <img alt="Recent public source activity" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/source-activity-light.png?profile=ouuan-live-v1" width="100%" />
-</picture>
+**05** public repositories · **121** contributions in the last year
 
----
-
-### Activity overview
-
-**120** public contributions in the last year · calculated live from GitHub.
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-dark.png?profile=ouuan-live-v2" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-light.png?profile=ouuan-live-v2" />
-  <img alt="Live public contribution mix" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-light.png?profile=ouuan-live-v2" width="100%" />
-</picture>
-
-<sub>Source activity and contribution mix use the latest 100 public GitHub events. This profile sync does not use follower counts or private account data.</sub>
+<sub>Public profile and repository data refresh every hour. GitHub’s native contribution calendar and activity are shown below.</sub>

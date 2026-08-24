@@ -18,7 +18,7 @@ SOURCE STARS         1
 SOURCE FORKS         0
 CONTRIBUTIONS        161 in the last year
 LAST CONTRIBUTION    24 Aug 2026
-LATEST SOURCE        fractal_tree · 24 Aug 2026
+LATEST SOURCE        student-hall-management-system · 24 Aug 2026
 ```
 
 ## Coding Footprint in Public Source
@@ -45,7 +45,40 @@ _A tested snake-game tracker crossing the public GitHub contribution chart. It r
 ## Public build records
 
 <details open>
-<summary><strong>01 · fractal_tree</strong> · C · updated 24 Aug 2026</summary>
+<summary><strong>01 · student-hall-management-system</strong> · C · updated 24 Aug 2026</summary>
+
+Public source repository
+
+`C` · updated 24 Aug 2026 · 0 stars · 0 forks
+
+[Open source →](https://github.com/0x7byte/student-hall-management-system)
+
+</details>
+
+<details>
+<summary><strong>02 · vehicle-management-system</strong> · C · updated 24 Aug 2026</summary>
+
+Public source repository
+
+`C` · updated 24 Aug 2026 · 0 stars · 0 forks
+
+[Open source →](https://github.com/0x7byte/vehicle-management-system)
+
+</details>
+
+<details>
+<summary><strong>03 · RLE_Compressor-Decompressor</strong> · C · updated 24 Aug 2026</summary>
+
+Public source repository
+
+`C` · updated 24 Aug 2026 · 0 stars · 0 forks
+
+[Open source →](https://github.com/0x7byte/RLE_Compressor-Decompressor)
+
+</details>
+
+<details>
+<summary><strong>04 · fractal_tree</strong> · C · updated 24 Aug 2026</summary>
 
 Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
 
@@ -55,52 +88,19 @@ Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, 
 
 </details>
 
-<details>
-<summary><strong>02 · RLE_Compressor-Decompressor</strong> · C · updated 19 Apr 2026</summary>
-
-Public source repository
-
-`C` · updated 19 Apr 2026 · 0 stars · 0 forks
-
-[Open source →](https://github.com/0x7byte/RLE_Compressor-Decompressor)
-
-</details>
-
-<details>
-<summary><strong>03 · vehicle-management-system</strong> · C · updated 19 Apr 2026</summary>
-
-Public source repository
-
-`C` · updated 19 Apr 2026 · 0 stars · 0 forks
-
-[Open source →](https://github.com/0x7byte/vehicle-management-system)
-
-</details>
-
-<details>
-<summary><strong>04 · student-hall-management-system</strong> · C · updated 18 Apr 2026</summary>
-
-Public source repository
-
-`C` · updated 18 Apr 2026 · 0 stars · 0 forks
-
-[Open source →](https://github.com/0x7byte/student-hall-management-system)
-
-</details>
-
 ---
 
 ## Latest GitHub trace
 
 ```text
-LATEST EVENT   24 Aug 2026 · Updated 0x7byte/vehicle-management-system
+LATEST EVENT   24 Aug 2026 · Updated 0x7byte/0x7byte
 SYNC WINDOW    every 15 minutes
 ```
 
+- **24 Aug 2026** — Updated `0x7byte/0x7byte`
 - **24 Aug 2026** — Updated `0x7byte/vehicle-management-system`
 - **24 Aug 2026** — Updated `0x7byte/RLE_Compressor-Decompressor`
 - **24 Aug 2026** — Starred `0x7byte/fractal_tree`
-- **24 Aug 2026** — Updated `0x7byte/0x7byte`
 
 ---
 

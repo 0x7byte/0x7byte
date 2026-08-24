@@ -1,62 +1,43 @@
 # mhsan
 
-### Competitive programmer · AI engineering direction
+**Competitive programmer · C developer · AI engineering path**
 
-> I enjoy algorithmic problem solving, precise C foundations, and the work of turning that systems mindset toward AI engineering.
+Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
-**Rangpur, Bangladesh** · [@0x7byte](https://github.com/0x7byte) · **05** public repositories
-
----
-
-## Current arc
-
-**01 · Solve** — algorithms, data structures, and competitive-programming discipline.
-
-**02 · Build** — C projects where correctness, performance, and clear I/O matter.
-
-**03 · Expand** — study and build toward practical AI engineering, one real foundation at a time.
-
-`C, Makefile` · last public source update: [fractal_tree](https://github.com/0x7byte/fractal_tree) on 23 Aug 2026
+I use competitive programming to sharpen algorithmic thinking, then turn that discipline into reliable code. I am building from C and systems fundamentals toward practical AI engineering.
 
 ---
 
-## Build shelf
+## Developer brief
 
-### [fractal_tree](https://github.com/0x7byte/fractal_tree)
+- **Strengths:** algorithms, data structures, problem solving, and C fundamentals.
+- **Now:** public C projects that emphasize clear logic, file I/O, and practical program design.
+- **Next:** deepen the engineering foundations needed for applied AI work.
+
+## Selected source
+
+**01. [fractal_tree](https://github.com/0x7byte/fractal_tree)** · `C`
 Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
+_Publicly updated 23 Aug 2026_
 
-`C` · public source updated 23 Aug 2026
-
-### [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)
+**02. [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)** · `C`
 Public source repository
+_Publicly updated 19 Apr 2026_
 
-`C` · public source updated 19 Apr 2026
-
-### [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)
+**03. [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)** · `C`
 Public source repository
+_Publicly updated 19 Apr 2026_
 
-`C` · public source updated 19 Apr 2026
-
-### [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)
+**04. [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)** · `C`
 Public source repository
-
-`C` · public source updated 18 Apr 2026
-
+_Publicly updated 18 Apr 2026_
 
 ---
 
-## Public signal
+## Live account note
 
-**127** contributions in the last year · latest public event observed **24 Aug 2026**.
+**05** public repositories · **128** contributions in the last year · **C · Makefile**
 
-### Activity cross-section — live public events
+Latest public source update: [fractal_tree](https://github.com/0x7byte/fractal_tree) on 23 Aug 2026.
 
-```text
-                          CODE REVIEW    0 ·   0%
-                                      │
-COMMITS  100 · 100%  ─────────────────── ● ───────────────────  ISSUES    0 ·   0%
-                                      │
-                       PULL REQUESTS    0 ·   0%
-```
-
-> This native-text activity graphic is generated from the latest 100 public GitHub events. GitHub’s annual contribution calendar and activity remain below the README.
+<sub>This README refreshes hourly from public GitHub account data. GitHub’s native contribution calendar and activity stay below the profile.</sub>

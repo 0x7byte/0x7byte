@@ -177,28 +177,14 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
     food_column, food_row = divmod(food_index, 7)
     food_x = start_x + food_column * (cell + gap) + cell / 2
     food_y = start_y + food_row * (cell + gap) + cell / 2
-    body: list[str] = []
-    for segment in range(12, 0, -1):
-        delay = -segment * 0.32
-        size = 12 if segment < 5 else 10
-        fill = colors["snake_alt"] if segment % 2 else colors["snake"]
-        body.append(
-            f'<g><rect x="{-size / 2:.1f}" y="{-size / 2:.1f}" width="{size}" height="{size}" rx="{size / 2.5:.1f}" fill="{fill}" stroke="{colors["bg"]}" stroke-width="1.5"/>'
-            f'<animateMotion dur="16s" begin="{delay:.2f}s" repeatCount="indefinite" rotate="auto"><mpath href="#snake-route"/></animateMotion></g>'
-        )
-    preview_y = start_y + 3 * (cell + gap) + cell / 2
-    preview_body: list[str] = []
-    for segment in range(10):
-        preview_x = start_x + segment * (cell + gap) + cell / 2
-        fill = colors["snake_alt"] if segment % 2 else colors["snake"]
-        preview_body.append(f'<circle cx="{preview_x:.1f}" cy="{preview_y:.1f}" r="6.2" fill="{fill}" stroke="{colors["bg"]}" stroke-width="1.5"/>')
-    preview_head_x = start_x + 10 * (cell + gap) + cell / 2
-    preview_snake = (
-        f'<g><title>Snake game preview: the animated snake traverses the full calendar</title>{"".join(preview_body)}'
-        f'<rect x="{preview_head_x - 9:.1f}" y="{preview_y - 8:.1f}" width="19" height="16" rx="7" fill="{colors["head"]}" stroke="{colors["bg"]}" stroke-width="2"/>'
-        f'<circle cx="{preview_head_x + 3:.1f}" cy="{preview_y - 4:.1f}" r="1.8" fill="{colors["eye"]}"/><circle cx="{preview_head_x + 3:.1f}" cy="{preview_y + 4:.1f}" r="1.8" fill="{colors["eye"]}"/>'
-        f'<path d="M{preview_head_x + 9:.1f},{preview_y:.1f} L{preview_head_x + 15:.1f},{preview_y - 3:.1f} M{preview_head_x + 9:.1f},{preview_y:.1f} L{preview_head_x + 15:.1f},{preview_y + 3:.1f}" stroke="{colors["tongue"]}" stroke-width="1.7" stroke-linecap="round"/>'
-        f'</g>'
+    snake_sprite = (
+        f'<g><title>Continuous snake moving through the full contribution calendar</title>'
+        f'<path d="M-142,0 C-124,-14 -106,14 -88,0 S-52,-14 -34,0 S-16,14 0,0" fill="none" stroke="{colors["snake_alt"]}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>'
+        f'<path d="M-142,0 C-124,-14 -106,14 -88,0 S-52,-14 -34,0 S-16,14 0,0" fill="none" stroke="{colors["snake"]}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 7"/>'
+        f'<rect x="-10" y="-9" width="21" height="18" rx="8" fill="{colors["head"]}" stroke="{colors["bg"]}" stroke-width="2"/>'
+        f'<circle cx="4" cy="-4" r="2" fill="{colors["eye"]}"/><circle cx="4" cy="4" r="2" fill="{colors["eye"]}"/>'
+        f'<path d="M10,0 L17,-3 M10,0 L17,3" stroke="{colors["tongue"]}" stroke-width="1.8" stroke-linecap="round"/>'
+        f'<animateMotion dur="16s" repeatCount="indefinite" rotate="auto"><mpath href="#snake-route"/></animateMotion></g>'
     )
     active_days = sum(1 for day in days if day["contributionCount"] > 0)
     total = sum(day["contributionCount"] for day in days)
@@ -213,9 +199,7 @@ def contribution_snake_svg(days: list[dict], theme: str) -> str:
 {''.join(cells)}
 <use href="#snake-route" fill="none" stroke="{colors['snake_alt']}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.14"/>
 <g transform="translate({food_x:.1f},{food_y:.1f})"><circle r="7" fill="{colors['food']}"><animate attributeName="r" values="6;8;6" dur="1.1s" repeatCount="indefinite"/></circle><path d="M0,-5 C2,-12 8,-12 8,-7" fill="none" stroke="{colors['leaf']}" stroke-width="3" stroke-linecap="round"/></g>
-{preview_snake}
-{''.join(body)}
-<g><rect x="-10" y="-9" width="20" height="18" rx="8" fill="{colors['head']}" stroke="{colors['bg']}" stroke-width="2"/><circle cx="4" cy="-4" r="2" fill="{colors['eye']}"/><circle cx="4" cy="4" r="2" fill="{colors['eye']}"/><path d="M10,0 L16,-3 M10,0 L16,3" stroke="{colors['tongue']}" stroke-width="1.7" stroke-linecap="round"/><animateMotion dur="16s" repeatCount="indefinite" rotate="auto"><mpath href="#snake-route"/></animateMotion></g>
+{snake_sprite}
 <line x1="42" y1="260" x2="958" y2="260" stroke="{colors['line']}" stroke-width="2"/>
 <text x="42" y="283" fill="{colors['muted']}" font-family="Arial, Helvetica, sans-serif" font-size="13">{active_days} active public days · green cells = contribution level · snake visits every calendar cell · red target = peak public day</text>
 </svg>'''

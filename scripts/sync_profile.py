@@ -390,14 +390,14 @@ def build_readme(user: dict, repositories: list[dict], events: list[dict], contr
             "",
             "```text",
             f"LATEST EVENT   {latest_event_date} · {latest_event.replace('`', '')}",
-            "SYNC WINDOW    every 15 minutes",
+            "SYNC WINDOW    every 5 minutes",
             "```",
             "",
             *recent_activity(events),
             "",
             "---",
             "",
-            "<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>",
+            "<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 5 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>",
             "",
         ]
     )

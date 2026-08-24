@@ -32,7 +32,7 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale
 
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=554be85585fb" alt="Animated contribution snake tracker across the complete public GitHub contribution calendar." width="100%">
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=abecfdf9f72e" alt="Animated contribution snake tracker across the complete public GitHub contribution calendar." width="100%">
 
 ## Public build records
 
@@ -86,7 +86,7 @@ Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, 
 
 ```text
 LATEST EVENT   24 Aug 2026 · Updated 0x7byte/0x7byte
-SYNC WINDOW    every 15 minutes
+SYNC WINDOW    every 5 minutes
 ```
 
 - **24 Aug 2026** — Updated `0x7byte/0x7byte`
@@ -96,4 +96,4 @@ SYNC WINDOW    every 15 minutes
 
 ---
 
-<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>
+<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 5 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>

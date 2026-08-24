@@ -37,9 +37,9 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 ## Contribution snake tracker
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-dark.svg?v=0e786ef9483b">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg?v=0e786ef9483b">
-  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg?v=0e786ef9483b" alt="Live snake-game tracker running across the public GitHub contribution chart.">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-dark.svg?v=cd10bbfb279c">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg?v=cd10bbfb279c">
+  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg?v=cd10bbfb279c" alt="Live snake-game tracker running across the public GitHub contribution chart.">
 </picture>
 
 _A snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._

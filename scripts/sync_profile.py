@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import urllib.request
+from hashlib import sha256
 from collections import Counter
 from datetime import datetime, timezone
 
@@ -88,6 +89,24 @@ def source_repositories(user: dict) -> list[dict]:
     return [repository for repository in user["repositories"]["nodes"] if repository["name"] != OWNER]
 
 
+def public_state_key(user: dict, repositories: list[dict]) -> str:
+    state = {
+        "contributions": user["contributionsCollection"]["contributionCalendar"]["totalContributions"],
+        "repositories": [
+            {
+                "name": repository["name"],
+                "updatedAt": repository["updatedAt"],
+                "stars": repository["stargazerCount"],
+                "forks": repository["forkCount"],
+                "languages": [(edge["node"]["name"], edge["size"]) for edge in repository["languages"]["edges"]],
+            }
+            for repository in repositories
+        ],
+    }
+    encoded = json.dumps(state, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return sha256(encoded).hexdigest()[:12]
+
+
 def language_sizes(repositories: list[dict]) -> Counter[str]:
     sizes: Counter[str] = Counter()
     for repository in repositories:
@@ -144,7 +163,7 @@ def render_coding_footprint(user: dict, repositories: list[dict]) -> None:
         image.save(f"assets/coding-footprint-{theme}.png", optimize=True)
 
 
-def build_readme(user: dict, repositories: list[dict]) -> str:
+def build_readme(user: dict, repositories: list[dict], state_key: str) -> str:
     if not repositories:
         raise RuntimeError("No public non-profile repositories are available to synchronize.")
     selected = [repository for repository in user["pinnedItems"]["nodes"] if repository and repository["name"] != OWNER] or repositories[:4]
@@ -152,7 +171,6 @@ def build_readme(user: dict, repositories: list[dict]) -> str:
     contribution_total = user["contributionsCollection"]["contributionCalendar"]["totalContributions"]
     total_stars = sum(repository["stargazerCount"] for repository in repositories)
     total_forks = sum(repository["forkCount"] for repository in repositories)
-    generated_at = datetime.now(timezone.utc).strftime("%d %b %Y, %H:%M UTC")
     base = "https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets"
 
     lines = [
@@ -169,9 +187,9 @@ def build_readme(user: dict, repositories: list[dict]) -> str:
         "## Coding footprint",
         "",
         "<picture>",
-        f'  <source media="(prefers-color-scheme: dark)" srcset="{base}/coding-footprint-dark.png?profile=colorful-v1">',
-        f'  <source media="(prefers-color-scheme: light)" srcset="{base}/coding-footprint-light.png?profile=colorful-v1">',
-        f'  <img src="{base}/coding-footprint-light.png?profile=colorful-v1" alt="Live public-source coding footprint showing language-byte shares and the language of the most recently updated public project.">',
+        f'  <source media="(prefers-color-scheme: dark)" srcset="{base}/coding-footprint-dark.png?v={state_key}">',
+        f'  <source media="(prefers-color-scheme: light)" srcset="{base}/coding-footprint-light.png?v={state_key}">',
+        f'  <img src="{base}/coding-footprint-light.png?v={state_key}" alt="Live public-source coding footprint showing language-byte shares and the language of the most recently updated public project.">',
         "</picture>",
         "",
         "_This is calculated from public repository language bytes, so it shows source composition rather than private editor time._",
@@ -198,7 +216,7 @@ def build_readme(user: dict, repositories: list[dict]) -> str:
             "",
             f"{user['repositories']['totalCount']} public repositories · {total_stars} public stars · {total_forks} public forks · {contribution_total} contributions in the last year",
             "",
-            f"<sub>Refreshed {generated_at} from public GitHub account, repository, and language data. GitHub’s native contribution calendar and activity remain below.</sub>",
+            "<sub>Refreshes from public GitHub API data every 15 minutes and commits only when the public data changes. GitHub’s native contribution calendar and activity remain below.</sub>",
             "",
         ]
     )
@@ -210,4 +228,4 @@ if __name__ == "__main__":
     repositories = source_repositories(user)
     render_coding_footprint(user, repositories)
     with open("README.md", "w", encoding="utf-8") as output:
-        output.write(build_readme(user, repositories))
+        output.write(build_readme(user, repositories, public_state_key(user, repositories)))

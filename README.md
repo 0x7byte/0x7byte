@@ -16,7 +16,7 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 PUBLIC REPOSITORIES  5
 SOURCE STARS         0
 SOURCE FORKS         0
-CONTRIBUTIONS        142 in the last year
+CONTRIBUTIONS        157 in the last year
 LAST CONTRIBUTION    24 Aug 2026
 LATEST SOURCE        fractal_tree · 23 Aug 2026
 ```
@@ -37,9 +37,9 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 ## Contribution snake tracker
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-dark.svg?v=274453fb8bc2">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg?v=274453fb8bc2">
-  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg?v=274453fb8bc2" alt="Live snake-game tracker running across the public GitHub contribution chart.">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-dark.svg?v=acbd860cbb2c">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg?v=acbd860cbb2c">
+  <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake-light.svg?v=acbd860cbb2c" alt="Live snake-game tracker running across the public GitHub contribution chart.">
 </picture>
 
 _A snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._

@@ -1,51 +1,50 @@
 # mhsan
 
-Competitive programmer and C developer, learning toward AI engineering.
+**Competitive programmer · C developer · AI engineering path**
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
-I value precise reasoning, small correct programs, and the patience to understand systems from first principles.
+I use competitive programming to build algorithmic discipline and translate it into careful, practical code. My next focus is engineering the foundations needed for useful AI systems.
 
 ---
 
-## Focus
+## Developer profile
 
-**Problem solving.** Algorithms, data structures, and the habits built through competitive programming.
+| Foundation | Current direction |
+| --- | --- |
+| Algorithms, data structures, and problem solving | C projects, systems fundamentals, and applied AI engineering |
 
-**Programming.** C projects that practice clear control flow, validation, files, and efficient representation.
+## Live language usage
 
-**Direction.** Growing toward AI engineering through practical foundations rather than empty claims.
+| Language | Public code share | Text bar |
+| --- | ---: | --- |
+| C | 98% | `████████████████` |
+| Makefile | 2% | `█░░░░░░░░░░░░░░░` |
 
----
+_Calculated from language-byte data across public, non-fork repositories._
+
+## Recent public activity
+
+| Activity type | Count | Share |
+| --- | ---: | ---: |
+| Commits | 100 | 100% |
+| Pull requests | 0 | 0% |
+| Issues | 0 | 0% |
+| Code reviews | 0 | 0% |
+
+_Based on the latest 100 public GitHub events. Latest observed event: 24 Aug 2026._
 
 ## Public projects
 
-### [fractal_tree](https://github.com/0x7byte/fractal_tree)
-Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
+| Project | Main language | Last update | Summary |
+| --- | --- | --- | --- |
+| [fractal_tree](https://github.com/0x7byte/fractal_tree) | C | 23 Aug 2026 | Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and rea… |
+| [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor) | C | 19 Apr 2026 | Public source repository |
+| [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system) | C | 19 Apr 2026 | Public source repository |
+| [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system) | C | 18 Apr 2026 | Public source repository |
 
-`C` · last updated 23 Aug 2026
+## Public account snapshot
 
-### [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)
-Public source repository
+**5** public repositories · **0** public stars · **0** public forks · **117** contributions in the last year
 
-`C` · last updated 19 Apr 2026
-
-### [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)
-Public source repository
-
-`C` · last updated 19 Apr 2026
-
-### [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)
-Public source repository
-
-`C` · last updated 18 Apr 2026
-
----
-
-## Public presence
-
-05 public repositories. 133 contributions in the last year. Main public languages: C, Makefile.
-
-Most recently updated source: [fractal_tree](https://github.com/0x7byte/fractal_tree) on 23 Aug 2026.
-
-<sub>Public account details refresh hourly. GitHub’s own contribution calendar and activity are shown below this README.</sub>
+<sub>Refreshed 24 Aug 2026, 09:25 UTC from public GitHub account, repository, language, and event data. GitHub’s native contribution calendar and activity remain below.</sub>

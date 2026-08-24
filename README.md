@@ -36,7 +36,7 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 ## Contribution snake tracker
 
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=146d4af082db" alt="Tested animated snake-game tracker running across the public GitHub contribution chart.">
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=72dcaf2142f1" alt="Tested animated snake-game tracker running across the public GitHub contribution chart.">
 
 _A tested snake-game tracker crossing the public GitHub contribution chart. It refreshes with the scheduled profile sync._
 

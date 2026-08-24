@@ -1,4 +1,4 @@
-name: Synchronize Public Developer Dashboard
+name: Synchronize Public Coding Footprint
 
 on:
   schedule:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Synchronize public developer dashboard
+      - name: Synchronize public coding footprint
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/sync_profile.py
@@ -30,5 +30,5 @@ jobs:
             echo "No public account changes to synchronize."
             exit 0
           fi
-          git commit -m "chore: synchronize public developer dashboard"
+          git commit -m "chore: synchronize public coding footprint"
           git push

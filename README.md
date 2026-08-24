@@ -1,7 +1,7 @@
 # mhsan
 
 <p align="center">
-  <code>competitive programming</code> · <code>C / C++</code> · <code>Python data stack</code> · <code>ONNX models</code>
+  <code>competitive programming</code> · <code>C / C++</code> · <code>Python / Pandas / Matplotlib</code> · <code>ONNX</code>
 </p>
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
@@ -20,7 +20,7 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
 **Model foundation:** ONNX models.
 
-**Direction:** AI engineering as a disciplined next step, built on these foundations.
+**Direction:** Let's see together.
 
 ---
 
@@ -108,5 +108,3 @@ SYNC WINDOW    every 15 minutes
 - **24 Aug 2026** — Updated `0x7byte/0x7byte`
 
 ---
-
-<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>

@@ -8,9 +8,8 @@ from datetime import datetime, timezone
 
 
 OWNER = "0x7byte"
-EVENTS_URL = f"https://api.github.com/users/{OWNER}/events/public?per_page=100"
 QUERY = """
-query PublicDeveloperDashboard($login: String!) {
+query CompactProfile($login: String!) {
   user(login: $login) {
     login name location url
     repositories(first: 100, ownerAffiliations: OWNER, isFork: false, privacy: PUBLIC, orderBy: {field: UPDATED_AT, direction: DESC}) {
@@ -22,37 +21,30 @@ query PublicDeveloperDashboard($login: String!) {
       }
     }
     pinnedItems(first: 6, types: REPOSITORY) {
-      nodes { ... on Repository { name description url updatedAt stargazerCount forkCount primaryLanguage { name } } }
+      nodes { ... on Repository { name description url updatedAt primaryLanguage { name } } }
     }
     contributionsCollection { contributionCalendar { totalContributions } }
   }
 }
 """
 
-ACTIVITY = {
-    "PushEvent": "Commits",
-    "PullRequestEvent": "Pull requests",
-    "IssuesEvent": "Issues",
-    "PullRequestReviewEvent": "Code reviews",
-}
-
-
-def request_json(url: str, body: bytes | None = None) -> dict | list:
-    token = os.environ.get("GITHUB_TOKEN")
-    headers = {"Accept": "application/vnd.github+json", "User-Agent": "0x7byte-profile-sync"}
-    if token:
-        headers["Authorization"] = f"Bearer {token}"
-    if body:
-        headers["Content-Type"] = "application/json"
-    request = urllib.request.Request(url, data=body, headers=headers)
-    with urllib.request.urlopen(request, timeout=30) as response:
-        return json.load(response)
-
 
 def account_data() -> dict:
-    if not os.environ.get("GITHUB_TOKEN"):
+    token = os.environ.get("GITHUB_TOKEN")
+    if not token:
         raise RuntimeError("GITHUB_TOKEN is required for the account synchronization query.")
-    payload = request_json("https://api.github.com/graphql", json.dumps({"query": QUERY, "variables": {"login": OWNER}}).encode("utf-8"))
+    request = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=json.dumps({"query": QUERY, "variables": {"login": OWNER}}).encode("utf-8"),
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json",
+            "User-Agent": "0x7byte-profile-sync",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        payload = json.load(response)
     if payload.get("errors"):
         raise RuntimeError(f"GitHub GraphQL error: {payload['errors']}")
     return payload["data"]["user"]
@@ -62,12 +54,12 @@ def format_date(value: str) -> str:
     return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc).strftime("%d %b %Y")
 
 
-def concise(text: str | None, limit: int = 86) -> str:
+def concise(text: str | None, limit: int = 96) -> str:
     value = text or "Public source repository"
     return value if len(value) <= limit else f"{value[:limit - 1].rstrip()}…"
 
 
-def text_bar(percentage: float, width: int = 16) -> str:
+def text_bar(percentage: float, width: int = 20) -> str:
     filled = max(1, round(width * percentage / 100)) if percentage else 0
     return "█" * filled + "░" * (width - filled)
 
@@ -83,29 +75,12 @@ def language_rows(repositories: list[dict]) -> list[tuple[str, int, str]]:
     return [(name, round(size * 100 / total), text_bar(size * 100 / total)) for name, size in sizes.most_common(5)]
 
 
-def activity_rows(events: list[dict]) -> tuple[list[tuple[str, int, int]], str]:
-    counts: Counter[str] = Counter({label: 0 for label in ACTIVITY.values()})
-    for event in events:
-        label = ACTIVITY.get(event.get("type"))
-        if not label:
-            continue
-        if event["type"] == "PushEvent":
-            counts[label] += max(event.get("payload", {}).get("size", 0), 1)
-        else:
-            counts[label] += 1
-    total = sum(counts.values())
-    rows = [(label, counts[label], round(counts[label] * 100 / total) if total else 0) for label in ACTIVITY.values()]
-    latest = format_date(events[0]["created_at"]) if events else "No recent public event"
-    return rows, latest
-
-
-def build_readme(user: dict, events: list[dict]) -> str:
+def build_readme(user: dict) -> str:
     repositories = [repository for repository in user["repositories"]["nodes"] if repository["name"] != OWNER]
     if not repositories:
         raise RuntimeError("No public non-profile repositories are available to synchronize.")
     selected = [repository for repository in user["pinnedItems"]["nodes"] if repository and repository["name"] != OWNER] or repositories[:4]
     language_data = language_rows(repositories)
-    activity_data, latest_activity = activity_rows(events)
     name = user.get("name") or user["login"]
     contribution_total = user["contributionsCollection"]["contributionCalendar"]["totalContributions"]
     total_stars = sum(repository["stargazerCount"] for repository in repositories)
@@ -123,15 +98,9 @@ def build_readme(user: dict, events: list[dict]) -> str:
         "",
         "---",
         "",
-        "## Developer profile",
+        "## Coding footprint in public source",
         "",
-        "| Foundation | Current direction |",
-        "| --- | --- |",
-        "| Algorithms, data structures, and problem solving | C projects, systems fundamentals, and applied AI engineering |",
-        "",
-        "## Live language usage",
-        "",
-        "| Language | Public code share | Text bar |",
+        "| Language | Public code share | Footprint |",
         "| --- | ---: | --- |",
     ]
     for language, percentage, bar in language_data:
@@ -139,40 +108,32 @@ def build_readme(user: dict, events: list[dict]) -> str:
     lines.extend(
         [
             "",
-            "_Calculated from language-byte data across public, non-fork repositories._",
+            "_Live language-byte share across public, non-fork repositories. This is a public-source footprint, not a time tracker._",
             "",
-            "## Recent public activity",
+            "---",
             "",
-            "| Activity type | Count | Share |",
-            "| --- | ---: | ---: |",
-        ]
-    )
-    for label, count, share in activity_data:
-        lines.append(f"| {label} | {count} | {share}% |")
-    lines.extend(
-        [
+            "## Public source index",
             "",
-            f"_Based on the latest 100 public GitHub events. Latest observed event: {latest_activity}._",
-            "",
-            "## Public projects",
-            "",
-            "| Project | Main language | Last update | Summary |",
-            "| --- | --- | --- | --- |",
         ]
     )
     for repository in selected:
         language = (repository.get("primaryLanguage") or {}).get("name") or "source"
-        lines.append(
-            f"| [{repository['name']}]({repository['url']}) | {language} | {format_date(repository['updatedAt'])} | {concise(repository.get('description'))} |"
+        lines.extend(
+            [
+                f"**[{repository['name']}]({repository['url']})** · `{language}` · updated {format_date(repository['updatedAt'])}",
+                concise(repository.get("description")),
+                "",
+            ]
         )
     lines.extend(
         [
+            "---",
             "",
-            "## Public account snapshot",
+            "## Public account",
             "",
-            f"**{user['repositories']['totalCount']}** public repositories · **{total_stars}** public stars · **{total_forks}** public forks · **{contribution_total}** contributions in the last year",
+            f"{user['repositories']['totalCount']} public repositories · {total_stars} public stars · {total_forks} public forks · {contribution_total} contributions in the last year",
             "",
-            f"<sub>Refreshed {generated_at} from public GitHub account, repository, language, and event data. GitHub’s native contribution calendar and activity remain below.</sub>",
+            f"<sub>Refreshed {generated_at} from public GitHub account, repository, and language data. GitHub’s native contribution calendar and activity remain below.</sub>",
             "",
         ]
     )
@@ -181,4 +142,4 @@ def build_readme(user: dict, events: list[dict]) -> str:
 
 if __name__ == "__main__":
     with open("README.md", "w", encoding="utf-8") as output:
-        output.write(build_readme(account_data(), request_json(EVENTS_URL)))
+        output.write(build_readme(account_data()))

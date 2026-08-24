@@ -31,7 +31,6 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale
 
-_Calculated from public repository language bytes. It represents source composition, not private editor time._
 
 ---
 

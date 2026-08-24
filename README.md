@@ -1,20 +1,35 @@
 # mhsan
 
-**Competitive programming · C development · AI engineering foundations**
+<p align="center">
+  <code>competitive programming</code> · <code>C development</code> · <code>AI engineering foundations</code>
+</p>
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
-> A public workbench for algorithmic practice, close-to-the-machine C, and the disciplined path toward useful AI systems.
+> I use algorithmic practice to develop precision, build close-to-the-machine software in C, and learn the engineering foundations behind useful AI systems.
 
 ---
 
-## Live source signal
+## Builder notes
 
-`5` public repositories · `0` source stars · `0` source forks · `145` contributions in the last year
+**Practice:** competitive programming and algorithmic problem solving.
 
-**Newest source:** [fractal_tree](https://github.com/0x7byte/fractal_tree) · updated 23 Aug 2026
+**Foundation:** C, data structures, and careful systems thinking.
 
-**Latest contribution:** 24 Aug 2026 · **Latest public trace:** 24 Aug 2026
+**Direction:** AI engineering as a disciplined next step, built on those foundations.
+
+---
+
+## Live source heartbeat
+
+```text
+PUBLIC REPOSITORIES  5
+SOURCE STARS         0
+SOURCE FORKS         0
+CONTRIBUTIONS        145 in the last year
+LAST CONTRIBUTION    24 Aug 2026
+LATEST SOURCE        fractal_tree · 23 Aug 2026
+```
 
 ## Coding Footprint in Public Source
 
@@ -31,32 +46,63 @@ _Calculated from public repository language bytes. It represents source composit
 
 ---
 
-## Public workbench
+## Public build records
 
-**01 · [fractal_tree](https://github.com/0x7byte/fractal_tree)**
-`C` · updated 23 Aug 2026
+<details open>
+<summary><strong>01 · fractal_tree</strong> · C · updated 23 Aug 2026</summary>
+
 Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
 
-**02 · [RLE_Compressor-Decompressor](https://github.com/0x7byte/RLE_Compressor-Decompressor)**
-`C` · updated 19 Apr 2026
+`C` · updated 23 Aug 2026 · 0 stars · 0 forks
+
+[Open source →](https://github.com/0x7byte/fractal_tree)
+
+</details>
+
+<details>
+<summary><strong>02 · RLE_Compressor-Decompressor</strong> · C · updated 19 Apr 2026</summary>
+
 Public source repository
 
-**03 · [vehicle-management-system](https://github.com/0x7byte/vehicle-management-system)**
-`C` · updated 19 Apr 2026
+`C` · updated 19 Apr 2026 · 0 stars · 0 forks
+
+[Open source →](https://github.com/0x7byte/RLE_Compressor-Decompressor)
+
+</details>
+
+<details>
+<summary><strong>03 · vehicle-management-system</strong> · C · updated 19 Apr 2026</summary>
+
 Public source repository
 
-**04 · [student-hall-management-system](https://github.com/0x7byte/student-hall-management-system)**
-`C` · updated 18 Apr 2026
+`C` · updated 19 Apr 2026 · 0 stars · 0 forks
+
+[Open source →](https://github.com/0x7byte/vehicle-management-system)
+
+</details>
+
+<details>
+<summary><strong>04 · student-hall-management-system</strong> · C · updated 18 Apr 2026</summary>
+
 Public source repository
+
+`C` · updated 18 Apr 2026 · 0 stars · 0 forks
+
+[Open source →](https://github.com/0x7byte/student-hall-management-system)
+
+</details>
 
 ---
 
-## Public trace
+## Latest GitHub trace
 
-> **Latest event · 24 Aug 2026:** Updated `0x7byte/0x7byte`
+```text
+LATEST EVENT   24 Aug 2026 · Updated 0x7byte/0x7byte
+SYNC WINDOW    every 15 minutes
+```
 
 - **24 Aug 2026** — Updated `0x7byte/0x7byte`
 
 ---
 
-<sub>Live from public GitHub data: repositories, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public work appears after the next successful sync. The Coding Footprint is native text, never an image.</sub>
+<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 15 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>

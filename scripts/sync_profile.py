@@ -73,6 +73,11 @@ def activity_table(events: list[dict]) -> tuple[list[tuple[str, int, float]], st
     return rows, format_date(newest)
 
 
+def compact_description(description: str | None) -> str:
+    value = description or "Public source repository"
+    return value if len(value) <= 110 else f"{value[:107].rstrip()}…"
+
+
 def build_readme(user: dict, events: list[dict]) -> str:
     repositories = [repository for repository in user["repositories"]["nodes"] if repository["name"] != OWNER]
     if not repositories:
@@ -91,28 +96,35 @@ def build_readme(user: dict, events: list[dict]) -> str:
         "",
         f"**C developer** · {user.get('location') or 'GitHub'} · [@{user['login']}]({user['url']})",
         "",
-        "## Profile snapshot",
+        "---",
         "",
-        "| Field | Live public value |",
-        "| :-- | :-- |",
-        f"| Public repositories | **{user['repositories']['totalCount']:02d}** |",
-        f"| Languages | {languages} |",
-        f"| Latest source update | [{repositories[0]['name']}]({repositories[0]['url']}) · {format_date(repositories[0]['updatedAt'])} |",
-        f"| Contributions this year | **{contribution_total:03d}** |",
+        "### Snapshot",
         "",
-        "## Public projects",
+        f"**{user['repositories']['totalCount']:02d}** public repositories · **{contribution_total:03d}** contributions this year",
         "",
-        "| Repository | Focus | Language | Updated |",
-        "| :-- | :-- | :-- | :-- |",
+        f"**Languages:** {languages}",
+        "",
+        f"**Latest source update:** [{repositories[0]['name']}]({repositories[0]['url']}) · {format_date(repositories[0]['updatedAt'])}",
+        "",
+        "---",
+        "",
+        "### Selected public source",
+        "",
     ]
     for repository in selected:
         language = (repository.get("primaryLanguage") or {}).get("name") or "source"
-        description = repository.get("description") or "Public source repository"
-        lines.append(f"| [{repository['name']}]({repository['url']}) | {description} | {language} | {format_date(repository['updatedAt'])} |")
+        lines.extend(
+            [
+                f"- **[{repository['name']}]({repository['url']})** — {compact_description(repository.get('description'))}",
+                f"  _{language} · updated {format_date(repository['updatedAt'])}_",
+            ]
+        )
     lines.extend(
         [
             "",
-            "## Recent public contribution activity",
+            "---",
+            "",
+            "### Recent public contribution activity",
             "",
             "| Contribution type | Latest 100 public events | Share |",
             "| :-- | --: | --: |",
@@ -124,7 +136,7 @@ def build_readme(user: dict, events: list[dict]) -> str:
         [
             f"| Latest observed public event | {latest_event} | — |",
             "",
-            "> This accessible activity table replaces the graph. It refreshes from public GitHub events every hour; GitHub’s native contribution calendar and activity remain below the profile README.",
+            "> Live public data refreshes every hour. GitHub’s native contribution calendar and activity remain below the profile README.",
             "",
         ]
     )

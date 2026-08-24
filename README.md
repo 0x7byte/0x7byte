@@ -14,6 +14,18 @@
 
 ---
 
+### contribution activity
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-dark.png?profile=account-live-v1" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-light.png?profile=account-live-v1" />
+  <img alt="Live public contribution mix" src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-mix-light.png?profile=account-live-v1" width="100%" />
+</picture>
+
+<sub>Contribution mix is calculated from the latest 100 public GitHub events and refreshes with this account sync.</sub>
+
+---
+
 ### recently updated public repositories
 
 `01` **[fractal_tree](https://github.com/0x7byte/fractal_tree)** — Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.

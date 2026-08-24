@@ -1,4 +1,4 @@
-name: Refresh Profile Assets
+name: Refresh Live Profile
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: profile-assets
+  group: profile-refresh
   cancel-in-progress: false
 
 jobs:
@@ -17,24 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install image renderer
-        run: python3 -m pip install --disable-pip-version-check --quiet Pillow
-      - name: Refresh public profile panels
-        run: python3 scripts/generate_profile_panels.py
+      - name: Refresh live profile text
+        run: python3 scripts/refresh_live_readme.py
       - uses: Platane/snk@v3
         with:
           github_user_name: 0x7byte
           outputs: |
             assets/contribution-snake-light.svg?palette=github-light
             assets/contribution-snake-dark.svg?palette=github-dark
-      - name: Commit refreshed profile assets when they change
+      - name: Commit refreshed profile when data changes
         run: |
           git config user.name "0x7byte profile bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add --force assets/profile-summary-light.png assets/profile-summary-dark.png assets/code-footprint-light.png assets/code-footprint-dark.png assets/source-index-light.png assets/source-index-dark.png assets/contribution-snake-light.svg assets/contribution-snake-dark.svg
+          git add --force README.md assets/contribution-snake-light.svg assets/contribution-snake-dark.svg
           if git diff --cached --quiet; then
-            echo "No profile asset changes to commit."
+            echo "No profile data changes to commit."
             exit 0
           fi
-          git commit -m "chore: refresh profile assets"
+          git commit -m "chore: refresh live profile data"
           git push

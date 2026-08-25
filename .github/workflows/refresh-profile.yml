@@ -19,6 +19,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install snake animation renderer
         run: python3 -m pip install --disable-pip-version-check Pillow
+      - name: Verify contribution Snake renderer
+        run: python3 scripts/test_snake.py
       - name: Synchronize professional public profile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

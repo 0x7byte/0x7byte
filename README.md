@@ -16,7 +16,7 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 PUBLIC REPOSITORIES  5
 SOURCE STARS         1
 SOURCE FORKS         0
-CONTRIBUTIONS        166 in the last year
+CONTRIBUTIONS        167 in the last year
 LAST CONTRIBUTION    25 Aug 2026
 LATEST SOURCE        fractal_tree · 24 Aug 2026
 ```
@@ -32,7 +32,7 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale
 
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=1a18a76e2da3" alt="Animated contribution snake tracker across the complete public GitHub contribution calendar." width="100%">
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=cca2fadacb76" alt="Animated contribution snake tracker across the complete public GitHub contribution calendar." width="100%">
 
 ## Public build records
 

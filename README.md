@@ -1,12 +1,12 @@
 # mhsan
 
+> I'm a beginner AI Engineer and a competitive programmer. I created this GitHub profile to gain experience and I use algorithmic practice to develop precision, build close-to-the-machine software in C, Java and C++, and extend those foundations through Python data work and ONNX models. I’ll be happy to receive any feedback or code reviews that can help me improve 💪
+
 <p align="center">
   <code>competitive programming</code> · <code>C / C++ / Java</code> · <code>Python Libraries</code> · <code>ONNX</code>
 </p>
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
-
-> I'm a beginner AI Engineer and a competitive programmer. I created this GitHub profile to gain experience and I use algorithmic practice to develop precision, build close-to-the-machine software in C, Java and C++, and extend those foundations through Python data work and ONNX models. I’ll be happy to receive any feedback or code reviews that can help me improve 💪
 
 ⭐️ Feel free to follow me - I’d really appreciate your support!
 

@@ -32,13 +32,7 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/output/github-snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/output/github-snake.svg">
-    <img src="https://raw.githubusercontent.com/0x7byte/0x7byte/output/github-snake.svg" alt="GitHub Snake">
-  </picture>
-</p>
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=cca2fadacb76" alt="Animated contribution snake tracker across the complete public GitHub contribution calendar." width="100%">
 
 ## Public build records
 

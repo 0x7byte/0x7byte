@@ -1,14 +1,12 @@
 # mhsan
 
-> I'm a beginner AI Engineer and a competitive programmer. I created this GitHub profile to gain experience and I use algorithmic practice to develop precision, build close-to-the-machine software in C, Java and C++, and extend those foundations through Python data work and ONNX models. I’ll be happy to receive any feedback or code reviews that can help me improve 💪
-
 <p align="center">
   <code>competitive programming</code> · <code>C / C++ / Java</code> · <code>Python Libraries</code> · <code>ONNX</code>
 </p>
 
 Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
-⭐️ Feel free to follow me - I’d really appreciate your support!
+> I use algorithmic practice to develop precision, build close-to-the-machine software in C and C++, and extend those foundations through Python data work and ONNX models.
 
 ---
 
@@ -18,8 +16,8 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 PUBLIC REPOSITORIES  5
 SOURCE STARS         1
 SOURCE FORKS         0
-CONTRIBUTIONS        162 in the last year
-LAST CONTRIBUTION    24 Aug 2026
+CONTRIBUTIONS        165 in the last year
+LAST CONTRIBUTION    25 Aug 2026
 LATEST SOURCE        fractal_tree · 24 Aug 2026
 ```
 
@@ -34,7 +32,7 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 
 🟩 language share · 🟨 language of the latest public source update · ▫ remaining scale
 
-<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=b88d097b1db3" alt="Animated contribution snake tracker across the complete public GitHub contribution calendar." width="100%">
+<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/main/assets/contribution-snake.gif?v=cd931168538a" alt="Animated contribution snake tracker across the complete public GitHub contribution calendar." width="100%">
 
 ## Public build records
 
@@ -87,14 +85,14 @@ Public source repository
 ## Latest GitHub trace
 
 ```text
-LATEST EVENT   24 Aug 2026 · Updated 0x7byte/0x7byte
+LATEST EVENT   25 Aug 2026 · Updated 0x7byte/0x7byte
 SYNC WINDOW    every 5 minutes
 ```
 
+- **25 Aug 2026** — Updated `0x7byte/0x7byte`
 - **24 Aug 2026** — Updated `0x7byte/0x7byte`
 - **24 Aug 2026** — Updated `0x7byte/fractal_tree`
 - **24 Aug 2026** — Updated `0x7byte/student-hall-management-system`
-- **24 Aug 2026** — Starred `0x7byte/0x7byte`
 
 ---
 

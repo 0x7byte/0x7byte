@@ -30,7 +30,7 @@ def test_empty_calendar_still_renders():
     assert frame.width > 0 and frame.height > 0
 
 
-def test_readme_uses_committed_gif():
+def test_readme_uses_output_branch_svgs():
     user = {
         "name": "Test User",
         "login": "test-user",
@@ -56,12 +56,14 @@ def test_readme_uses_committed_gif():
         "languages": {"edges": [{"size": 1, "node": {"name": "Python", "color": "#3572A5"}}]},
     }]
     readme = build_readme(user, repositories, [], "test-version")
-    assert "main/assets/contribution-snake.gif?v=test-version" in readme
-    assert "output/github-snake.svg" not in readme
+    assert '<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/output/github-snake-dark.svg">' in readme
+    assert '<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/0x7byte/0x7byte/output/github-snake.svg">' in readme
+    assert '<img src="https://raw.githubusercontent.com/0x7byte/0x7byte/output/github-snake.svg"' in readme
+    assert "main/assets/contribution-snake.gif" not in readme
 
 
 if __name__ == "__main__":
     test_frames_are_renderable_and_distinct()
     test_empty_calendar_still_renders()
-    test_readme_uses_committed_gif()
+    test_readme_uses_output_branch_svgs()
     print("snake regression tests passed")

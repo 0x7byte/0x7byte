@@ -89,14 +89,15 @@ Public source repository
 ## Latest GitHub trace
 
 ```text
-LATEST EVENT   25 Aug 2026 · Updated 0x7byte/0x7byte
+LATEST EVENT   31 Aug 2026 · Updated 0x7byte/0x7byte
 SYNC WINDOW    every 5 minutes
 ```
 
+- **31 Aug 2026** — Updated `0x7byte/0x7byte`
 - **25 Aug 2026** — Updated `0x7byte/0x7byte`
 - **24 Aug 2026** — Updated `0x7byte/0x7byte`
 - **24 Aug 2026** — Updated `0x7byte/fractal_tree`
-- **24 Aug 2026** — Updated `0x7byte/student-hall-management-system`
 
 ---
 
+<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 5 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>

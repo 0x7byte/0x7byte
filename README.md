@@ -100,4 +100,3 @@ SYNC WINDOW    every 5 minutes
 
 ---
 
-<sub>Live public data only: repository records, pins, source updates, language bytes, stars, forks, contributions, and activity refresh every 5 minutes. New public repositories appear after the next successful synchronization. The Coding Footprint is native text, never an image.</sub>

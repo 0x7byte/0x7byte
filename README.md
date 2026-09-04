@@ -14,16 +14,16 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 
 ```text
 PUBLIC REPOSITORIES  5
-SOURCE STARS         1
+SOURCE STARS         0
 SOURCE FORKS         0
 CONTRIBUTIONS        181 in the last year
 LAST CONTRIBUTION    04 Sep 2026
-LATEST SOURCE        fractal_tree · 24 Aug 2026
+LATEST SOURCE        fractal_tree · 04 Sep 2026
 ```
 
 ## Coding Footprint in Public Source
 
-> **Live public data** · 4 public development repositories · latest source update 24 Aug 2026
+> **Live public data** · 4 public development repositories · latest source update 04 Sep 2026
 
 ```text
 C          98.44%  🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨  31,455 bytes
@@ -41,11 +41,11 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 ## Public build records
 
 <details open>
-<summary><strong>01 · fractal_tree</strong> · C · updated 24 Aug 2026</summary>
+<summary><strong>01 · fractal_tree</strong> · C · updated 04 Sep 2026</summary>
 
 Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
 
-`C` · updated 24 Aug 2026 · 1 star · 0 forks
+`C` · updated 04 Sep 2026 · 0 stars · 0 forks
 
 [Open source →](https://github.com/0x7byte/fractal_tree)
 

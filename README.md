@@ -13,20 +13,20 @@ Rangpur, Bangladesh · [@0x7byte](https://github.com/0x7byte)
 ## Live source heartbeat
 
 ```text
-PUBLIC REPOSITORIES  5
+PUBLIC REPOSITORIES  6
 SOURCE STARS         0
 SOURCE FORKS         0
-CONTRIBUTIONS        182 in the last year
+CONTRIBUTIONS        183 in the last year
 LAST CONTRIBUTION    05 Sep 2026
-LATEST SOURCE        fractal_tree · 04 Sep 2026
+LATEST SOURCE        AI_Engineering_pr · 05 Sep 2026
 ```
 
 ## Coding Footprint in Public Source
 
-> **Live public data** · 4 public development repositories · latest source update 04 Sep 2026
+> **Live public data** · 5 public development repositories · latest source update 05 Sep 2026
 
 ```text
-C          98.44%  🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟨  31,455 bytes
+C          98.44%  🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩  31,455 bytes
 Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫  497 bytes
 ```
 
@@ -41,7 +41,18 @@ Makefile   01.56%  🟩▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫▫
 ## Public build records
 
 <details open>
-<summary><strong>01 · fractal_tree</strong> · C · updated 04 Sep 2026</summary>
+<summary><strong>01 · AI_Engineering_pr</strong> · source · updated 05 Sep 2026</summary>
+
+Public source repository
+
+`source` · updated 05 Sep 2026 · 0 stars · 0 forks
+
+[Open source →](https://github.com/0x7byte/AI_Engineering_pr)
+
+</details>
+
+<details>
+<summary><strong>02 · fractal_tree</strong> · C · updated 04 Sep 2026</summary>
 
 Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, and real-time graphics.
 
@@ -52,7 +63,7 @@ Recursive fractal tree visualizer in C with Raylib — recursion, trigonometry, 
 </details>
 
 <details>
-<summary><strong>02 · student-hall-management-system</strong> · C · updated 24 Aug 2026</summary>
+<summary><strong>03 · student-hall-management-system</strong> · C · updated 24 Aug 2026</summary>
 
 Public source repository
 
@@ -63,7 +74,7 @@ Public source repository
 </details>
 
 <details>
-<summary><strong>03 · vehicle-management-system</strong> · C · updated 24 Aug 2026</summary>
+<summary><strong>04 · vehicle-management-system</strong> · C · updated 24 Aug 2026</summary>
 
 Public source repository
 
@@ -74,7 +85,7 @@ Public source repository
 </details>
 
 <details>
-<summary><strong>04 · RLE_Compressor-Decompressor</strong> · C · updated 24 Aug 2026</summary>
+<summary><strong>05 · RLE_Compressor-Decompressor</strong> · C · updated 24 Aug 2026</summary>
 
 Public source repository
 

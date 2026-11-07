@@ -112,11 +112,11 @@ Public source repository
 ## Latest GitHub trace
 
 ```text
-LATEST EVENT   07 Oct 2026 · Updated 0x7byte/AQSH
+LATEST EVENT   — · No recent public event is currently available
 SYNC WINDOW    every 5 minutes
 ```
 
-- **07 Oct 2026** — Updated `0x7byte/AQSH`
+- No recent public event is currently available through GitHub’s public events feed.
 
 ---
 
